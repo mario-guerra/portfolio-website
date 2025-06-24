@@ -69,8 +69,8 @@ export default function Contact() {
                     <div>
                       <h3 className="font-semibold">Email</h3>
                       <p className="text-sm text-foreground/80">
-                        <a href="mailto:john.doe@example.com" className="hover:text-primary">
-                          john.doe@example.com
+                        <a href="mailto:mario.guerra@example.com" className="hover:text-primary">
+                          mario.guerra@example.com
                         </a>
                       </p>
                     </div>
@@ -141,7 +141,7 @@ export default function Contact() {
                           value={formState.name}
                           onChange={handleChange}
                           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                          placeholder="John Doe"
+                          placeholder="Mario Guerra"
                           required
                         />
                       </div>
@@ -155,7 +155,7 @@ export default function Contact() {
                           value={formState.email}
                           onChange={handleChange}
                           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                          placeholder="john.doe@example.com"
+                          placeholder="mario.guerra@example.com"
                           required
                         />
                       </div>

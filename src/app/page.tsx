@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FiArrowRight, FiGithub, FiExternalLink } from "react-icons/fi";
+import avatarImage from "../../public/images/avatars/Mario_Guerra_avatar.png";
 
 // Featured projects data
 const featuredProjects = [
@@ -44,10 +45,10 @@ export default function Home() {
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter text-foreground sm:text-5xl xl:text-6xl/none">
-                  Hello, I'm John Doe
+                  AI-Powered Tools & API Design for Enhanced Developer Experience
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  A passionate full-stack developer specializing in building exceptional digital experiences.
+                  Hi, I'm Mario Guerra. I specialize in creating AI-powered tools and processes that enhance developer experiences, helping teams ship high-quality APIs faster. By combining API design expertise with AI innovations, I make software development more intuitive, efficient, and reliable for teams of all sizes.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -69,8 +70,8 @@ export default function Home() {
             <div className="flex items-center justify-center">
               <div className="relative aspect-square overflow-hidden rounded-full border-2 border-primary bg-background/50 p-2">
                 <Image
-                  src="https://placehold.co/600x600/4f46e5/ffffff?text=John+Doe"
-                  alt="John Doe"
+                  src={avatarImage}
+                  alt="Mario Guerra"
                   width={500}
                   height={500}
                   className="aspect-square rounded-full object-cover"

@@ -11,7 +11,7 @@ export default function Resume() {
                 <div className="flex flex-col items-center justify-center space-y-2 text-center sm:flex-row sm:justify-between sm:space-y-0 sm:text-left">
                   <div>
                     <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                      John Doe
+                      Mario Guerra
                     </h1>
                     <p className="text-foreground/80">Frontend Developer</p>
                   </div>
@@ -29,8 +29,8 @@ export default function Resume() {
                 <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
                   <div className="flex items-center text-sm text-foreground/80">
                     <FiMail className="mr-1 h-4 w-4" />
-                    <a href="mailto:john.doe@example.com" className="hover:text-primary">
-                      john.doe@example.com
+                    <a href="mailto:mario.guerra@example.com" className="hover:text-primary">
+                      mario.guerra@example.com
                     </a>
                   </div>
                   <div className="flex items-center text-sm text-foreground/80">

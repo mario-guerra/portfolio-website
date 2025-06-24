@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowRight, FiFileText, FiLinkedin, FiGithub, FiTwitter } from "react-icons/fi";
+import avatarImage from "../../../public/images/avatars/Mario_Guerra_avatar.png";
 
 export default function AboutPage() {
   return (
@@ -19,7 +20,7 @@ export default function AboutPage() {
               </div>
               <div className="max-w-[600px] space-y-4 text-foreground/90">
                 <p>
-                  Hello! I'm John Doe, a full-stack developer based in San Francisco, CA. I have a passion for building
+                  Hello! I'm Mario Guerra, a full-stack developer based in San Francisco, CA. I have a passion for building
                   digital experiences that are both functional and beautiful.
                 </p>
                 <p>
@@ -34,7 +35,7 @@ export default function AboutPage() {
               </div>
               <div className="flex space-x-4">
                 <a
-                  href="https://linkedin.com/in/johndoe"
+                  href="https://linkedin.com/in/mario-guerra"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground hover:bg-muted"
@@ -43,7 +44,7 @@ export default function AboutPage() {
                   <FiLinkedin className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://github.com/johndoe"
+                  href="https://github.com/mario-guerra"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground hover:bg-muted"
@@ -52,7 +53,7 @@ export default function AboutPage() {
                   <FiGithub className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://twitter.com/johndoe"
+                  href="https://x.com/_marioguerra_"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground hover:bg-muted"
@@ -63,13 +64,13 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="flex items-center justify-center">
-              <div className="relative aspect-square overflow-hidden rounded-lg border-2 border-border bg-background/50 p-2">
+              <div className="relative aspect-square overflow-hidden rounded-full border-2 border-primary bg-background/50 p-2">
                 <Image
-                  src="https://placehold.co/600x600/4f46e5/ffffff?text=John+Doe"
-                  alt="John Doe"
+                  src={avatarImage}
+                  alt="Mario Guerra"
                   width={400}
                   height={400}
-                  className="aspect-square rounded-lg object-cover"
+                  className="aspect-square rounded-full object-cover"
                   priority
                 />
               </div>
