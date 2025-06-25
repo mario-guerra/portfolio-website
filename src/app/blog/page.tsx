@@ -22,14 +22,14 @@ const blogPosts = getAllPosts().map((post, index) => ({
 // Helper function to get a color based on category
 function getColorForCategory(category: string = ''): string {
   const colors: Record<string, string> = {
-    'Development': '9333ea',
-    'React': '4f46e5',
-    'Performance': '0ea5e9',
-    'CSS': '22c55e',
-    'Design': 'f97316',
-    'TypeScript': '0284c7',
-    'JavaScript': 'eab308',
-    'Next.js': '000000',
+    'AI Research': '9333ea',
+    'NLP': '4f46e5',
+    'Machine Learning': '0ea5e9',
+    'AI Ethics': '22c55e',
+    'Neural Networks': 'f97316',
+    'Transformers': '0284c7',
+    'Computer Vision': 'eab308',
+    'Responsible AI': '8b5cf6',
   };
   
   return colors[category] || '6b7280'; // Default gray if category not found
@@ -48,10 +48,10 @@ export default function Blog() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                  Blog & Articles
+                  Research & Insights
                 </h1>
                 <p className="mx-auto max-w-[700px] text-foreground/80 md:text-xl">
-                  Thoughts, insights, and perspectives on web development, design, and technology.
+                  Technical papers, insights, and perspectives on artificial intelligence, NLP, and machine learning.
                 </p>
               </div>
               <div className="flex flex-wrap items-center justify-center gap-2">
@@ -76,10 +76,10 @@ export default function Blog() {
               <div className="flex flex-col items-start gap-4">
                 <div className="space-y-2">
                   <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                    Featured Articles
+                    Featured Research
                   </h2>
                   <p className="max-w-[700px] text-foreground/80">
-                    A selection of my most popular and insightful articles.
+                    A selection of my most significant contributions to AI research and ethics.
                   </p>
                 </div>
                 <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">

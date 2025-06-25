@@ -26,12 +26,12 @@ Each post's `index.md` file starts with frontmatter (metadata) enclosed in tripl
 
 ```markdown
 ---
-title: "Your Post Title"
-excerpt: "A brief description of your post"
+title: "Your Research Paper Title"
+excerpt: "A brief description of your research findings"
 date: "YYYY-MM-DD"
-author: "Mario Guerra"
-category: "Development"
-tags: ["Tag1", "Tag2", "Tag3"]
+author: "Chad Jipiti"
+category: "AI Research"
+tags: ["Neural Networks", "Transformers", "NLP"]
 featured: true|false
 coverImage: "/images/blog/your-image.jpg"
 ---
@@ -46,8 +46,8 @@ Your content here in Markdown format...
 - **title** (required): The title of your post
 - **excerpt** (required): A brief description/summary of your post (shown in previews)
 - **date** (required): The publication date in YYYY-MM-DD format (used for sorting, not displayed on site)
-- **author**: The author's name (defaults to "Mario Guerra")
-- **category**: A single category for the post
+- **author**: The author's name (defaults to "Chad Jipiti")
+- **category**: A single category for the post (e.g., "AI Research", "NLP", "AI Ethics")
 - **tags**: An array of tags related to the post
 - **featured**: Boolean indicating if this is a featured post (shown prominently)
 - **coverImage**: Path to the cover image (should be in `/public/images/blog/`)

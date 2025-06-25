@@ -13,8 +13,8 @@ export default function Footer() {
           <div className="flex flex-col space-y-4">
             <h2 className="text-lg font-semibold">Chad Jipiti</h2>
             <p className="text-sm text-foreground/80">
-              Frontend developer specializing in creating beautiful, 
-              performant, and accessible user interfaces.
+              AI researcher specializing in large language models,
+              attention mechanisms, and responsible AI development.
             </p>
           </div>
 

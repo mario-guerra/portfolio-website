@@ -24,30 +24,34 @@ mkdir -p "$DIR_NAME"
 cat > "$DIR_NAME/index.md" << EOL
 ---
 title: "$TITLE"
-excerpt: "A brief description of your post."
+excerpt: "A brief description of your research findings."
 date: "$DATE"
-author: "Mario Guerra"
-category: "Development"
-tags: ["Tag1", "Tag2", "Tag3"]
+author: "Chad Jipiti"
+category: "AI Research"
+tags: ["Neural Networks", "NLP", "Machine Learning"]
 featured: false
 coverImage: "/images/blog/$SLUG-cover.jpg"
 ---
 
 # $TITLE
 
-Your content goes here. Write in Markdown format.
+Abstract: Provide a concise summary of your research findings.
 
-## Section 1
+## Introduction
 
-Content for section 1.
+Background and context for your research.
 
-## Section 2
+## Methodology
 
-Content for section 2.
+Technical details of your approach.
+
+## Experimental Results
+
+Present your findings with data and analysis.
 
 ## Conclusion
 
-Concluding thoughts.
+Implications and future research directions.
 EOL
 
 echo "Blog post created at $DIR_NAME/index.md"

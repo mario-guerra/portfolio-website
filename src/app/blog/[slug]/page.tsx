@@ -87,7 +87,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         {post.author && (
           <div className="flex items-center gap-3 mb-8">
             <Image
-              src="/images/avatars/Mario_Guerra_avatar.png"
+              src="/portfolio-website/images/profile/Chad_Jipiti_Avatar.jpg"
               alt={post.author}
               width={48}
               height={48}
@@ -95,7 +95,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             />
             <div>
               <p className="font-medium">{post.author}</p>
-              <p className="text-sm text-foreground/70">Author</p>
+              <p className="text-sm text-foreground/70">AI Researcher</p>
             </div>
           </div>
         )}
