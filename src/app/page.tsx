@@ -5,33 +5,33 @@ import avatarImage from "../../public/images/avatars/Mario_Guerra_avatar.png";
 
 // Featured projects data
 const featuredProjects = [
-  {
-    id: 1,
-    title: "E-Commerce Dashboard",
-    description: "A responsive admin dashboard with dark mode, authentication, and real-time analytics visualizations.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Chart.js"],
-    imageUrl: "https://placehold.co/600x400/9333ea/ffffff?text=E-Commerce+Dashboard",
-    githubUrl: "#",
-    liveUrl: "#",
-  },
-  {
-    id: 2,
-    title: "Travel Companion App",
-    description: "Mobile-first web application for travelers to plan trips, save favorite locations, and share experiences.",
-    tags: ["Next.js", "TailwindCSS", "MapBox API", "Prisma"],
-    imageUrl: "https://placehold.co/600x400/4f46e5/ffffff?text=Travel+App",
-    githubUrl: "#",
-    liveUrl: "#",
-  },
-  {
-    id: 3,
-    title: "AI Content Generator",
-    description: "Tool that leverages AI to help users create blog posts, social media content, and marketing copy.",
-    tags: ["React", "Node.js", "OpenAI API", "MongoDB"],
-    imageUrl: "https://placehold.co/600x400/0ea5e9/ffffff?text=AI+Generator",
-    githubUrl: "#",
-    liveUrl: "#",
-  },
+	{
+		id: 1,
+		title: "MultiModal Transformer",
+		description: "A state-of-the-art architecture for integrating vision and language understanding, with improved attention mechanisms.",
+		tags: ["PyTorch", "Computer Vision", "NLP", "Transformers"],
+		imageUrl: "https://placehold.co/600x400/9333ea/ffffff?text=MultiModal+Transformer",
+		githubUrl: "#",
+		liveUrl: "#",
+	},
+	{
+		id: 2,
+		title: "Neural Knowledge Retrieval",
+		description: "System for extracting and reasoning over knowledge embedded in large language models with improved retrieval accuracy.",
+		tags: ["TensorFlow", "Knowledge Graphs", "BERT", "Retrieval Augmentation"],
+		imageUrl: "https://placehold.co/600x400/4f46e5/ffffff?text=Neural+Knowledge",
+		githubUrl: "#",
+		liveUrl: "#",
+	},
+	{
+		id: 3,
+		title: "Responsible AI Framework",
+		description: "Comprehensive toolkit for evaluating and mitigating bias in language models, improving safety and fairness.",
+		tags: ["Python", "Ethics", "Model Evaluation", "Safety"],
+		imageUrl: "https://placehold.co/600x400/0ea5e9/ffffff?text=Responsible+AI",
+		githubUrl: "#",
+		liveUrl: "#",
+	},
 ];
 
 export default function Home() {
