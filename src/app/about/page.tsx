@@ -14,27 +14,23 @@ export default function AboutPage() {
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">About Me</h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  A passionate full-stack developer with a love for creating elegant, user-friendly applications.
+                  A passionate AI researcher specializing in natural language processing and large language models.
                 </p>
               </div>
               <div className="max-w-[600px] space-y-4 text-foreground/90">
                 <p>
-                  Hello! I'm John Doe, a full-stack developer based in San Francisco, CA. I have a passion for building
-                  digital experiences that are both functional and beautiful.
+                  Hello! I'm Chad Jipiti, an AI researcher and natural language processing specialist based in San Francisco. I have a passion for pushing the boundaries of what's possible with large language models and conversational AI.
                 </p>
                 <p>
-                  With over 5 years of experience in web development, I've worked on a variety of projects from small
-                  business websites to large-scale enterprise applications. I'm proficient in modern front-end frameworks
-                  like React and Next.js, as well as back-end technologies like Node.js and Express.
+                  With a background in computer science and machine learning, I've been fortunate to work at the forefront of AI research, contributing to groundbreaking models that have transformed how humans interact with computers. My work spans from the early days of transformer architectures to today's cutting-edge multimodal systems.
                 </p>
                 <p>
-                  When I'm not coding, you'll find me hiking in the mountains, reading science fiction, or experimenting
-                  with new cooking recipes.
+                  When I'm not training neural networks or optimizing attention mechanisms, you'll find me writing about AI ethics, mentoring the next generation of researchers, or contemplating the future of human-AI collaboration.
                 </p>
               </div>
               <div className="flex space-x-4">
                 <a
-                  href="https://linkedin.com/in/johndoe"
+                  href="https://linkedin.com/in/ChadJipiti"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground hover:bg-muted"
@@ -43,7 +39,7 @@ export default function AboutPage() {
                   <FiLinkedin className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://github.com/johndoe"
+                  href="https://github.com/ChadJipiti"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground hover:bg-muted"
@@ -52,7 +48,7 @@ export default function AboutPage() {
                   <FiGithub className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://twitter.com/johndoe"
+                  href="https://twitter.com/ChadJipiti"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground hover:bg-muted"
@@ -65,8 +61,8 @@ export default function AboutPage() {
             <div className="flex items-center justify-center">
               <div className="relative aspect-square overflow-hidden rounded-lg border-2 border-border bg-background/50 p-2">
                 <Image
-                  src="https://placehold.co/600x600/4f46e5/ffffff?text=John+Doe"
-                  alt="John Doe"
+                  src="https://placehold.co/600x600/4f46e5/ffffff?text=Chad+Jipiti"
+                  alt="Chad Jipiti"
                   width={400}
                   height={400}
                   className="aspect-square rounded-lg object-cover"
@@ -113,9 +109,31 @@ export default function AboutPage() {
               </div>
               
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold">Tools & Others</h3>
+                <h3 className="text-xl font-semibold">Machine Learning & AI</h3>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
-                  {["Git", "GitHub", "Docker", "CI/CD", "Webpack", "Jest", "Figma", "Responsive Design"].map((skill) => (
+                  {["PyTorch", "TensorFlow", "JAX", "Transformers", "Neural Networks", "NLP", "Computer Vision", "Reinforcement Learning"].map((skill) => (
+                    <div key={skill} className="rounded-md bg-card p-3 text-center text-sm shadow-sm">
+                      {skill}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold">Programming & Tools</h3>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
+                  {["Python", "C++", "Julia", "CUDA", "Kubernetes", "Docker", "Ray", "Distributed Computing"].map((skill) => (
+                    <div key={skill} className="rounded-md bg-card p-3 text-center text-sm shadow-sm">
+                      {skill}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold">Research & Collaboration</h3>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
+                  {["Technical Writing", "Academic Publication", "Model Evaluation", "Responsible AI", "Ethics", "Research Design", "Git", "CI/CD"].map((skill) => (
                     <div key={skill} className="rounded-md bg-card p-3 text-center text-sm shadow-sm">
                       {skill}
                     </div>
@@ -143,14 +161,14 @@ export default function AboutPage() {
                 <div className="absolute -left-[7px] top-[5px] h-3.5 w-3.5 rounded-full border-2 border-primary bg-background"></div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Senior Frontend Developer</h3>
-                    <span className="text-sm text-muted-foreground">2021 - Present</span>
+                    <h3 className="text-lg font-semibold">Senior AI Researcher</h3>
+                    <span className="text-sm text-muted-foreground">2022 - Present</span>
                   </div>
-                  <p className="text-base font-medium">TechCorp Inc.</p>
+                  <p className="text-base font-medium">DeepMind AI Labs</p>
                   <p className="text-sm text-muted-foreground">
-                    Lead the development of the company's flagship product using React and TypeScript.
-                    Implemented state management with Redux and integrated with backend APIs.
-                    Mentored junior developers and conducted code reviews.
+                    Leading research on multimodal large language models and developing
+                    novel attention mechanisms. Published papers at top AI conferences and
+                    mentored junior researchers on transformer architecture improvements.
                   </p>
                 </div>
               </div>
@@ -159,14 +177,14 @@ export default function AboutPage() {
                 <div className="absolute -left-[7px] top-[5px] h-3.5 w-3.5 rounded-full border-2 border-primary bg-background"></div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Full Stack Developer</h3>
-                    <span className="text-sm text-muted-foreground">2018 - 2021</span>
+                    <h3 className="text-lg font-semibold">AI Research Engineer</h3>
+                    <span className="text-sm text-muted-foreground">2020 - 2022</span>
                   </div>
-                  <p className="text-base font-medium">WebSolutions LLC</p>
+                  <p className="text-base font-medium">OpenAI</p>
                   <p className="text-sm text-muted-foreground">
-                    Developed and maintained various client websites and web applications.
-                    Worked with React, Node.js, and MongoDB to build full-stack applications.
-                    Collaborated with designers to implement responsive UI designs.
+                    Contributed to GPT-3 development with focus on optimization techniques
+                    and training infrastructure. Implemented improvements to reduce inference
+                    latency and developed fine-tuning systems for improved response quality.
                   </p>
                 </div>
               </div>
@@ -175,14 +193,14 @@ export default function AboutPage() {
                 <div className="absolute -left-[7px] top-[5px] h-3.5 w-3.5 rounded-full border-2 border-primary bg-background"></div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Junior Web Developer</h3>
-                    <span className="text-sm text-muted-foreground">2016 - 2018</span>
+                    <h3 className="text-lg font-semibold">NLP Researcher</h3>
+                    <span className="text-sm text-muted-foreground">2017 - 2020</span>
                   </div>
-                  <p className="text-base font-medium">Digital Agency Co.</p>
+                  <p className="text-base font-medium">Google Brain</p>
                   <p className="text-sm text-muted-foreground">
-                    Built responsive websites for various clients using HTML, CSS, and JavaScript.
-                    Worked with WordPress and custom PHP solutions.
-                    Assisted senior developers with larger projects and learned modern frameworks.
+                    Member of the original BERT team, contributing to transformer architecture
+                    design and pre-training methodology. Developed techniques for knowledge
+                    extraction and published highly-cited research on attention mechanisms.
                   </p>
                 </div>
               </div>
@@ -207,13 +225,14 @@ export default function AboutPage() {
                 <div className="absolute -left-[7px] top-[5px] h-3.5 w-3.5 rounded-full border-2 border-primary bg-background"></div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">B.S. in Computer Science</h3>
-                    <span className="text-sm text-muted-foreground">2012 - 2016</span>
+                    <h3 className="text-lg font-semibold">Ph.D. in Machine Learning</h3>
+                    <span className="text-sm text-muted-foreground">2014 - 2017</span>
                   </div>
-                  <p className="text-base font-medium">University of Technology</p>
+                  <p className="text-base font-medium">Stanford University</p>
                   <p className="text-sm text-muted-foreground">
-                    Graduated with honors. Specialized in web development and software engineering.
-                    Participated in various hackathons and coding competitions.
+                    Dissertation on attention mechanisms for neural network architectures under the
+                    guidance of Dr. Andrew Ng. Research focused on efficient training of neural networks
+                    for natural language understanding.
                   </p>
                 </div>
               </div>
@@ -222,13 +241,30 @@ export default function AboutPage() {
                 <div className="absolute -left-[7px] top-[5px] h-3.5 w-3.5 rounded-full border-2 border-primary bg-background"></div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Various Online Courses</h3>
-                    <span className="text-sm text-muted-foreground">2016 - Present</span>
+                    <h3 className="text-lg font-semibold">M.S. in Computer Science</h3>
+                    <span className="text-sm text-muted-foreground">2012 - 2014</span>
                   </div>
-                  <p className="text-base font-medium">Udemy, Coursera, Frontend Masters</p>
+                  <p className="text-base font-medium">Massachusetts Institute of Technology</p>
                   <p className="text-sm text-muted-foreground">
-                    Continuously learning and improving my skills through online courses.
-                    Completed certifications in React, Node.js, TypeScript, and more.
+                    Specialized in artificial intelligence and natural language processing.
+                    Research focused on neural network architectures for language understanding,
+                    with an emphasis on recurrent neural networks for sequence modeling.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="relative border-l border-border pl-6">
+                <div className="absolute -left-[7px] top-[5px] h-3.5 w-3.5 rounded-full border-2 border-primary bg-background"></div>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-semibold">B.S. in Computer Science</h3>
+                    <span className="text-sm text-muted-foreground">2008 - 2012</span>
+                  </div>
+                  <p className="text-base font-medium">University of California, Berkeley</p>
+                  <p className="text-sm text-muted-foreground">
+                    Graduated summa cum laude with honors thesis on statistical methods for machine
+                    translation. Participated in early research on neural approaches to NLP and
+                    completed a minor in Mathematics.
                   </p>
                 </div>
               </div>

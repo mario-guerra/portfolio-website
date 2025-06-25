@@ -1,76 +1,39 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowRight, FiCalendar, FiClock } from "react-icons/fi";
+import { getAllPosts, getCategories } from "@/lib/posts";
 
-// Blog post data
-const blogPosts = [
-  {
-    id: 1,
-    title: "Building Accessible Web Applications with React",
-    excerpt: "Learn how to create inclusive and accessible React applications using ARIA attributes, keyboard navigation, and semantic HTML.",
-    date: "June 15, 2025",
-    readTime: "8 min read",
-    imageUrl: "https://placehold.co/800x450/9333ea/ffffff?text=Accessibility",
-    category: "Development",
-    slug: "building-accessible-web-applications",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "State Management in 2025: Beyond Redux",
-    excerpt: "Explore modern state management solutions for React applications and how they compare to traditional Redux patterns.",
-    date: "May 28, 2025",
-    readTime: "10 min read",
-    imageUrl: "https://placehold.co/800x450/4f46e5/ffffff?text=State+Management",
-    category: "React",
-    slug: "state-management-beyond-redux",
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "Optimizing Next.js Applications for Performance",
-    excerpt: "Practical strategies for improving load times, reducing bundle sizes, and enhancing user experience in Next.js applications.",
-    date: "May 10, 2025",
-    readTime: "12 min read",
-    imageUrl: "https://placehold.co/800x450/0ea5e9/ffffff?text=Next.js+Performance",
-    category: "Performance",
-    slug: "optimizing-nextjs-applications",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "CSS-in-JS vs. Utility-First CSS: Making the Right Choice",
-    excerpt: "A comprehensive comparison of styling approaches and how to choose the best one for your project needs.",
-    date: "April 22, 2025",
-    readTime: "9 min read",
-    imageUrl: "https://placehold.co/800x450/22c55e/ffffff?text=CSS+Approaches",
-    category: "CSS",
-    slug: "css-in-js-vs-utility-first",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Building a Design System from Scratch",
-    excerpt: "A step-by-step guide to creating a comprehensive design system that scales with your application needs.",
-    date: "April 05, 2025",
-    readTime: "15 min read",
-    imageUrl: "https://placehold.co/800x450/f97316/ffffff?text=Design+System",
-    category: "Design",
-    slug: "building-design-system-from-scratch",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "TypeScript Best Practices for React Developers",
-    excerpt: "Essential TypeScript patterns and practices to make your React codebase more maintainable and type-safe.",
-    date: "March 18, 2025",
-    readTime: "11 min read",
-    imageUrl: "https://placehold.co/800x450/0284c7/ffffff?text=TypeScript",
-    category: "TypeScript",
-    slug: "typescript-best-practices-react",
-    featured: false,
-  },
-];
+export const dynamic = 'force-static';
+
+// Get posts from our Markdown files
+const blogPosts = getAllPosts().map((post, index) => ({
+  id: index + 1,
+  title: post.title,
+  excerpt: post.excerpt,
+  // Format the date more nicely without showing the year
+  date: new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric' }),
+  readTime: post.readTime || "5 min read", // Default if not specified
+  imageUrl: post.coverImage || `https://placehold.co/800x450/${getColorForCategory(post.category)}/ffffff?text=${encodeURIComponent(post.category)}`,
+  category: post.category,
+  slug: post.slug,
+  featured: post.featured || false,
+}));
+
+// Helper function to get a color based on category
+function getColorForCategory(category: string = ''): string {
+  const colors: Record<string, string> = {
+    'Development': '9333ea',
+    'React': '4f46e5',
+    'Performance': '0ea5e9',
+    'CSS': '22c55e',
+    'Design': 'f97316',
+    'TypeScript': '0284c7',
+    'JavaScript': 'eab308',
+    'Next.js': '000000',
+  };
+  
+  return colors[category] || '6b7280'; // Default gray if category not found
+}
 
 export default function Blog() {
   // Featured posts
@@ -92,30 +55,15 @@ export default function Blog() {
                 </p>
               </div>
               <div className="flex flex-wrap items-center justify-center gap-2">
-                <Link
-                  href="#development"
-                  className="inline-flex items-center justify-center rounded-full border border-input bg-background px-4 py-1 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
-                >
-                  Development
-                </Link>
-                <Link
-                  href="#design"
-                  className="inline-flex items-center justify-center rounded-full border border-input bg-background px-4 py-1 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
-                >
-                  Design
-                </Link>
-                <Link
-                  href="#react"
-                  className="inline-flex items-center justify-center rounded-full border border-input bg-background px-4 py-1 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
-                >
-                  React
-                </Link>
-                <Link
-                  href="#typescript"
-                  className="inline-flex items-center justify-center rounded-full border border-input bg-background px-4 py-1 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
-                >
-                  TypeScript
-                </Link>
+                {getCategories().map(category => (
+                  <Link
+                    key={category}
+                    href={`#${category.toLowerCase()}`}
+                    className="inline-flex items-center justify-center rounded-full border border-input bg-background px-4 py-1 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
+                  >
+                    {category}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
@@ -152,10 +100,6 @@ export default function Blog() {
                       <div className="flex items-center gap-2 p-4">
                         <div className="rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
                           {post.category}
-                        </div>
-                        <div className="flex items-center text-xs text-foreground/70">
-                          <FiCalendar className="mr-1 h-3 w-3" />
-                          {post.date}
                         </div>
                         <div className="flex items-center text-xs text-foreground/70">
                           <FiClock className="mr-1 h-3 w-3" />
@@ -218,10 +162,6 @@ export default function Blog() {
                       <div className="flex items-center gap-2 pb-2">
                         <div className="rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
                           {post.category}
-                        </div>
-                        <div className="flex items-center text-xs text-foreground/70">
-                          <FiCalendar className="mr-1 h-3 w-3" />
-                          {post.date}
                         </div>
                       </div>
                       <h3 className="text-lg font-bold">

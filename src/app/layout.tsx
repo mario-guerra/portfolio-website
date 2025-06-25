@@ -18,8 +18,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "John Doe | Portfolio",
-    template: "%s | John Doe Portfolio",
+    default: "Chad Jipiti | Portfolio",
+    template: "%s | Chad Jipiti Portfolio",
   },
   description: "Professional portfolio website showcasing web development projects and skills",
   metadataBase: new URL("https://example.com"),
