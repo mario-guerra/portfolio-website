@@ -61,7 +61,7 @@ export default function AboutPage() {
             <div className="flex items-center justify-center">
               <div className="relative aspect-square overflow-hidden rounded-lg border-2 border-border bg-background/50 p-2">
                 <Image
-                  src="https://placehold.co/600x600/4f46e5/ffffff?text=Chad+Jipiti"
+                  src="/portfolio-website/images/profile/Chad_Jipiti_Avatar.jpg"
                   alt="Chad Jipiti"
                   width={400}
                   height={400}

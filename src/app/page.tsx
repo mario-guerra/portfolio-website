@@ -69,7 +69,7 @@ export default function Home() {
 						<div className="flex items-center justify-center">
 							<div className="relative aspect-square overflow-hidden rounded-full border-2 border-primary bg-background/50 p-2">
 								<Image
-									src="https://placehold.co/600x600/4f46e5/ffffff?text=Chad+Jipiti"
+									src="/portfolio-website/images/profile/Chad_Jipiti_Avatar.jpg"
 									alt="Chad Jipiti"
 									width={500}
 									height={500}
