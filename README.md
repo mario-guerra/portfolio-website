@@ -1,6 +1,6 @@
 # Modern Portfolio Website
 
-A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
+A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS, built entirely using Cline + GPT-4.1 and GitHub Copilot + Claude 3.7. This portfolio showcases projects, a professional resume, and a blog system for sharing articles and insights, useful for developers and professionals looking to present their work online. A live preview is available at [https://marioguerra.xyz/portfolio-website/](https://marioguerra.xyz/portfolio-website/).
 
 ## Features
 
