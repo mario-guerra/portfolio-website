@@ -1,4 +1,4 @@
-import { FiDownload, FiGithub, FiLinkedin, FiMail, FiPhone } from "react-icons/fi";
+import { FiDownload, FiGithub, FiLinkedin, FiMail, FiPhone, FiYoutube } from "react-icons/fi";
 
 export default function Resume() {
   return (
@@ -13,7 +13,7 @@ export default function Resume() {
                     <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                       Mario Guerra
                     </h1>
-                    <p className="text-foreground/80">AI & NLP Researcher</p>
+                    <p className="text-foreground/80">Technical Product Manager</p>
                   </div>
                   <div className="flex flex-col gap-2 sm:items-end">
                     <a
@@ -29,26 +29,26 @@ export default function Resume() {
                 <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
                   <div className="flex items-center text-sm text-foreground/80">
                     <FiMail className="mr-1 h-4 w-4" />
-                    <a href="mailto:mario.guerra@example.com" className="hover:text-primary">
-                      mario.guerra@example.com
-                    </a>
-                  </div>
-                  <div className="flex items-center text-sm text-foreground/80">
-                    <FiPhone className="mr-1 h-4 w-4" />
-                    <a href="tel:+11234567890" className="hover:text-primary">
-                      +1 (123) 456-7890
+                    <a href="mailto:mario.guerra@gmail.com" className="hover:text-primary">
+                      mario.guerra@gmail.com
                     </a>
                   </div>
                   <div className="flex items-center text-sm text-foreground/80">
                     <FiGithub className="mr-1 h-4 w-4" />
-                    <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
-                      github.com/yourusername
+                    <a href="https://github.com/mario-guerra" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                      github.com/mario-guerra
                     </a>
                   </div>
                   <div className="flex items-center text-sm text-foreground/80">
                     <FiLinkedin className="mr-1 h-4 w-4" />
-                    <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
-                      linkedin.com/in/yourusername
+                    <a href="https://linkedin.com/in/mario-guerra" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                      linkedin.com/in/mario-guerra
+                    </a>
+                  </div>
+                  <div className="flex items-center text-sm text-foreground/80">
+                    <FiYoutube className="mr-1 h-4 w-4" />
+                    <a href="https://www.youtube.com/@thisismarioguerra" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                      youtube.com/@thisismarioguerra
                     </a>
                   </div>
                 </div>
@@ -56,69 +56,101 @@ export default function Resume() {
               
               {/* Summary */}
               <div className="space-y-3">
-                <h2 className="text-xl font-bold">Summary</h2>
+                <h2 className="text-xl font-bold">Professional Summary</h2>
                 <div className="border-l-2 border-primary pl-4">
                   <p className="text-foreground/80">
-                    AI researcher with 8+ years of experience in natural language processing and machine learning.
-                    Specializing in transformer architectures, neural networks, and large language models
-                    with a strong focus on advancing conversational AI and human-computer interaction.
+                    Technical Product Manager with over 15 years of experience driving innovation in developer tools, APIs, 
+                    AI-driven solutions, and scalable infrastructure. Proven ability to lead cross-functional teams, influence 
+                    stakeholders, and deliver impactful solutions that align technical capabilities with business needs. Skilled 
+                    in designing intuitive, secure, and scalable APIs, leveraging Azure technologies, and applying data-driven 
+                    roadmaps to optimize developer productivity and system reliability.
                   </p>
                 </div>
               </div>
               
               {/* Skills */}
               <div className="space-y-3">
-                <h2 className="text-xl font-bold">Skills</h2>
+                <h2 className="text-xl font-bold">Key Skills</h2>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div>
-                    <h3 className="text-lg font-semibold">Technical Skills</h3>
+                    <h3 className="text-lg font-semibold">Technical Expertise</h3>
                     <ul className="mt-2 space-y-1 text-foreground/80">
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
-                        <span>PyTorch / TensorFlow / JAX / Transformers</span>
+                        <span>APIs, LLMs, RAG, Distributed Systems</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
-                        <span>Python / Julia / C++ / CUDA</span>
+                        <span>Python, C/C++, Rust, Azure, Cloud Computing</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
-                        <span>Attention Mechanisms / Self-Supervised Learning</span>
+                        <span>OpenAPI Specification, Secure API Design</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
-                        <span>NLP / Large Language Models / Neural Networks</span>
+                        <span>LLMOps, Prompt Management, Data Processing</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
-                        <span>Git / GitHub / CI/CD / Distributed Computing</span>
+                        <span>Azure Foundry, Cosmos DB, Power BI, DevOps</span>
                       </li>
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold">Soft Skills</h3>
+                    <h3 className="text-lg font-semibold">Product & Leadership</h3>
                     <ul className="mt-2 space-y-1 text-foreground/80">
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
-                        <span>Problem Solving / Critical Thinking</span>
+                        <span>Developer Tools, API-First Strategies</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
-                        <span>Communication / Collaboration</span>
+                        <span>Cross-Functional Team Leadership</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
-                        <span>Time Management / Organization</span>
+                        <span>Data-Driven Decision Making</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
-                        <span>Adaptability / Continuous Learning</span>
+                        <span>Developer Advocacy, Community Engagement</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
-                        <span>Attention to Detail / User-Centered Design</span>
+                        <span>Strategic Product Thinking, Roadmapping</span>
                       </li>
                     </ul>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Key Projects */}
+              <div className="space-y-3">
+                <h2 className="text-xl font-bold">Key Projects</h2>
+                <div className="space-y-6">
+                  <div className="space-y-3 rounded-lg border border-border p-4">
+                    <h3 className="text-lg font-semibold">TypeSpec 1.0 Launch (Microsoft)</h3>
+                    <p className="text-foreground/80">
+                      Led the zero-to-one launch of TypeSpec, delivering an API definition language that achieved 8-10x code reduction 
+                      and 30% faster review times, delivering measurable developer productivity.
+                    </p>
+                  </div>
+                  
+                  <div className="space-y-3 rounded-lg border border-border p-4">
+                    <h3 className="text-lg font-semibold">RAG-Enhanced Chatbots with Microsoft Teams Data</h3>
+                    <p className="text-foreground/80">
+                      Built RAG-enhanced chatbots using Graph API and Azure Foundry, leveraging LLMs to optimize workflows and 
+                      demonstrate API-driven user support with secure data exchange.
+                    </p>
+                  </div>
+                  
+                  <div className="space-y-3 rounded-lg border border-border p-4">
+                    <h3 className="text-lg font-semibold">@azure Functionality in GitHub Copilot</h3>
+                    <p className="text-foreground/80">
+                      Contributed to LLM-driven API integrations, enhancing developer productivity through context-aware code 
+                      suggestions with secure data handling.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -127,118 +159,103 @@ export default function Resume() {
               <div className="space-y-3">
                 <h2 className="text-xl font-bold">Work Experience</h2>
                 <div className="space-y-6">
-                  {/* Job 1 */}
+                  {/* Microsoft */}
                   <div className="space-y-3 rounded-lg border border-border p-4">
                     <div className="flex flex-col justify-between gap-2 sm:flex-row">
                       <div>
-                        <h3 className="text-lg font-semibold">Senior AI Researcher</h3>
-                        <p className="text-foreground/80">DeepMind AI Labs</p>
+                        <h3 className="text-lg font-semibold">Senior Product Manager - TypeSpec API Definition Language</h3>
+                        <p className="text-foreground/80">Microsoft</p>
                       </div>
                       <div className="text-sm text-foreground/70">
-                        <p>Oct 2022 - Present</p>
-                        <p>San Francisco, CA</p>
+                        <p>June 2021 - Present</p>
                       </div>
                     </div>
                     <ul className="space-y-1 text-foreground/80">
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
                         <span>
-                          Leading research on next-generation multimodal large language models, resulting in
-                          state-of-the-art performance across multiple benchmarks.
+                          Drive product vision and strategy for TypeSpec, an open-source API definition language transforming API development.
                         </span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
                         <span>
-                          Developed novel attention mechanism architectures, reducing training time by 35%
-                          while improving model performance by 12%.
+                          Guide Azure service teams as a member of the Azure API Stewardship Board, driving best practices for API development.
                         </span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
                         <span>
-                          Mentored junior researchers and published 5 papers in top-tier conferences
-                          including NeurIPS, ICML, and ACL.
+                          Led the zero-to-one product launch of TypeSpec, delivering a high-impact solution that simplifies API design and accelerates development.
                         </span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
                         <span>
-                          Collaborated with ethics team to implement responsible AI guidelines and
-                          reduce bias in language models.
+                          Achieved 8-10x code reduction and reduced API review times by 33% through improved readability and consistency.
                         </span>
                       </li>
                     </ul>
                   </div>
                   
-                  {/* Job 2 */}
+                  {/* Qualcomm */}
                   <div className="space-y-3 rounded-lg border border-border p-4">
                     <div className="flex flex-col justify-between gap-2 sm:flex-row">
                       <div>
-                        <h3 className="text-lg font-semibold">AI Research Engineer</h3>
-                        <p className="text-foreground/80">OpenAI</p>
+                        <h3 className="text-lg font-semibold">Principal Software Engineer / Manager</h3>
+                        <p className="text-foreground/80">Qualcomm</p>
                       </div>
                       <div className="text-sm text-foreground/70">
-                        <p>March 2020 - Sept 2022</p>
-                        <p>San Francisco, CA</p>
+                        <p>June 2008 - June 2021</p>
                       </div>
                     </div>
                     <ul className="space-y-1 text-foreground/80">
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
                         <span>
-                          Contributed to the development of GPT-3, focusing on optimization techniques
-                          and training infrastructure for large-scale language models.
+                          Led the development of tools and platforms for Qualcomm's Hexagon DSP, the core of Snapdragon modem (wireless) 
+                          and Neural Processing Unit (NPU) technology.
                         </span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
                         <span>
-                          Implemented performance optimizations that reduced inference latency by 40%
-                          and improved training throughput by 25%.
+                          Served as de-facto product manager for Hexagon tools used by first-party software development teams, gathering 
+                          requirements, defining roadmaps, and designing user experiences that addressed developer pain points.
                         </span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
                         <span>
-                          Developed methods for evaluating model outputs and fine-tuning systems
-                          that significantly improved response quality and safety.
+                          Improved on-time delivery by 35% through the implementation of data-driven development processes, 
+                          optimizing project timelines and efficiency.
                         </span>
                       </li>
                     </ul>
                   </div>
                   
-                  {/* Job 3 */}
+                  {/* ARM */}
                   <div className="space-y-3 rounded-lg border border-border p-4">
                     <div className="flex flex-col justify-between gap-2 sm:flex-row">
                       <div>
-                        <h3 className="text-lg font-semibold">NLP Researcher</h3>
-                        <p className="text-foreground/80">Google Brain</p>
+                        <h3 className="text-lg font-semibold">Senior Applications Engineer</h3>
+                        <p className="text-foreground/80">ARM, Inc.</p>
                       </div>
                       <div className="text-sm text-foreground/70">
-                        <p>June 2017 - Feb 2020</p>
-                        <p>Mountain View, CA</p>
+                        <p>October 2006 - June 2008</p>
                       </div>
                     </div>
                     <ul className="space-y-1 text-foreground/80">
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
                         <span>
-                          Worked on the original BERT team, contributing to architecture design
-                          and pre-training methodology for transformer-based models.
+                          Delivered pre- and post-sales support for ARM's Cortex cores and software development tools.
                         </span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-2">•</span>
                         <span>
-                          Developed techniques for knowledge extraction and commonsense reasoning
-                          that improved model performance on multiple NLP benchmarks.
-                        </span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-2">•</span>
-                        <span>
-                          Published research on attention mechanisms that has been cited over 1,500 times.
+                          Developed training materials and hosted sessions to drive customer adoption.
                         </span>
                       </li>
                     </ul>
@@ -248,77 +265,62 @@ export default function Resume() {
               
               {/* Education */}
               <div className="space-y-3">
-                <h2 className="text-xl font-bold">Education</h2>
+                <h2 className="text-xl font-bold">Education & Certification</h2>
                 <div className="space-y-6">
                   <div className="space-y-3 rounded-lg border border-border p-4">
                     <div className="flex flex-col justify-between gap-2 sm:flex-row">
                       <div>
-                        <h3 className="text-lg font-semibold">Ph.D. in Machine Learning</h3>
-                        <p className="text-foreground/80">Stanford University</p>
-                      </div>
-                      <div className="text-sm text-foreground/70">
-                        <p>2014 - 2017</p>
+                        <h3 className="text-lg font-semibold">Masters of Engineering, Embedded Systems</h3>
+                        <p className="text-foreground/80">Arizona State University</p>
                       </div>
                     </div>
-                    <p className="text-foreground/80">
-                      Dissertation: "Attention Mechanisms for Neural Network Architectures"
-                      Advisor: Dr. Andrew Ng
-                    </p>
                   </div>
                   
                   <div className="space-y-3 rounded-lg border border-border p-4">
                     <div className="flex flex-col justify-between gap-2 sm:flex-row">
                       <div>
-                        <h3 className="text-lg font-semibold">Master of Science in Computer Science</h3>
-                        <p className="text-foreground/80">Massachusetts Institute of Technology</p>
-                      </div>
-                      <div className="text-sm text-foreground/70">
-                        <p>2012 - 2014</p>
+                        <h3 className="text-lg font-semibold">Bachelor of Science, Computer Engineering</h3>
+                        <p className="text-foreground/80">St. Mary's University</p>
                       </div>
                     </div>
-                    <p className="text-foreground/80">
-                      Specialized in artificial intelligence and natural language processing.
-                      Research focus on neural network architectures for language understanding.
-                    </p>
-                  </div>
-                  
-                  <div className="space-y-3 rounded-lg border border-border p-4">
-                    <div className="flex flex-col justify-between gap-2 sm:flex-row">
-                      <div>
-                        <h3 className="text-lg font-semibold">Bachelor of Science in Computer Science</h3>
-                        <p className="text-foreground/80">University of California, Berkeley</p>
-                      </div>
-                      <div className="text-sm text-foreground/70">
-                        <p>2008 - 2012</p>
-                      </div>
-                    </div>
-                    <p className="text-foreground/80">
-                      Graduated summa cum laude. Honors thesis on statistical methods for machine translation.
-                      Minor in Mathematics.
-                    </p>
                   </div>
                 </div>
               </div>
               
               {/* Certifications */}
               <div className="space-y-3">
-                <h2 className="text-xl font-bold">Certifications</h2>
+                <h2 className="text-xl font-bold">Professional Certifications</h2>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div className="rounded-lg border border-border p-4">
-                    <h3 className="font-semibold">NVIDIA Deep Learning Institute Certified Instructor</h3>
-                    <p className="text-sm text-foreground/70">NVIDIA • 2023</p>
+                    <h3 className="font-semibold">Pragmatic Management Certified (PMC-I)</h3>
+                    <p className="text-sm text-foreground/70">Pragmatic Institute</p>
                   </div>
                   <div className="rounded-lg border border-border p-4">
-                    <h3 className="font-semibold">TensorFlow Certified Developer</h3>
-                    <p className="text-sm text-foreground/70">Google • 2022</p>
+                    <h3 className="font-semibold">Rust Essential Training</h3>
+                    <p className="text-sm text-foreground/70">LinkedIn Learning</p>
                   </div>
                   <div className="rounded-lg border border-border p-4">
-                    <h3 className="font-semibold">AWS Machine Learning Specialty</h3>
-                    <p className="text-sm text-foreground/70">Amazon Web Services • 2021</p>
+                    <h3 className="font-semibold">AZ-900: Microsoft Azure Fundamentals</h3>
+                    <p className="text-sm text-foreground/70">Microsoft</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Publications */}
+              <div className="space-y-3">
+                <h2 className="text-xl font-bold">Selected Publications</h2>
+                <div className="space-y-3">
+                  <div className="rounded-lg border border-border p-4">
+                    <h3 className="font-semibold"><a href="https://typespec.io/blog/typespec-1-0-GA-release/" className="hover:text-primary">TypeSpec 1.0 GA - API-First, Made Practical</a></h3>
+                    <p className="text-foreground/80">Highlighted TypeSpec's impact on scalable API development and developer productivity.</p>
                   </div>
                   <div className="rounded-lg border border-border p-4">
-                    <h3 className="font-semibold">Professional Certificate in AI Ethics</h3>
-                    <p className="text-sm text-foreground/70">Harvard University • 2020</p>
+                    <h3 className="font-semibold"><a href="https://marioguerra.xyz/blog/ai-document-summarization-with-sliding-content-window/" className="hover:text-primary">AI Document Summarization with Sliding Content Window</a></h3>
+                    <p className="text-foreground/80">A practical solution for overcoming AI token limitations when summarizing large documents.</p>
+                  </div>
+                  <div className="rounded-lg border border-border p-4">
+                    <h3 className="font-semibold"><a href="https://marioguerra.xyz/documentation/making_apis_consumable_by_agents/" className="hover:text-primary">Making APIs Consumable by AI Agents</a></h3>
+                    <p className="text-foreground/80">Strategies for designing APIs that can be effectively discovered, understood, and utilized by AI agents and LLMs.</p>
                   </div>
                 </div>
               </div>
