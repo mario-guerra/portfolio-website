@@ -29,8 +29,8 @@ export default function Resume() {
                 <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
                   <div className="flex items-center text-sm text-foreground/80">
                     <FiMail className="mr-1 h-4 w-4" />
-                    <a href="mailto:john.doe@example.com" className="hover:text-primary">
-                      john.doe@example.com
+                    <a href="mailto:chad.jipiti@example.com" className="hover:text-primary">
+                      chad.jipiti@example.com
                     </a>
                   </div>
                   <div className="flex items-center text-sm text-foreground/80">
