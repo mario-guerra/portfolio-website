@@ -22,7 +22,7 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 - **Home**: Modern hero section with featured projects
 - **Projects**: Showcase of all projects with filtering options
 - **Resume**: Professional resume with download option
-- **Blog**: Markdown-based articles with featured posts, categories, and responsive layout
+- **Blog**: Markdown-based articles with blog posts and articles sections, categories, and responsive layout
 - **About**: Professional biography and skills
 - **Contact**: Contact form with validation
 
@@ -103,7 +103,7 @@ date: "YYYY-MM-DD"
 author: "Your Name"
 category: "Category"
 tags: ["Tag1", "Tag2", "Tag3"]
-featured: false
+blogpost: false
 coverImage: "/images/blog/your-post-slug-cover.jpg"
 ---
 
@@ -120,7 +120,7 @@ Your content goes here...
 - **Author**: Your name
 - **Category**: Main category for the post (used for filtering)
 - **Tags**: Array of tags related to the post (used for filtering)
-- **Featured**: Boolean (true/false) to determine if post appears in featured section
+- **Blogpost**: Boolean (true/false) to determine if post appears in the Blog Posts section (true) or Articles section (false)
 - **CoverImage**: Path to the cover image (place images in `public/images/blog/`)
 
 ### Adding Images
@@ -163,7 +163,7 @@ The blog system is built with the following components:
    - Uses `remark` and `remark-html` to convert Markdown to HTML
    - Calculates reading time automatically
 3. **Rendering**:
-   - `/blog` page: Displays all posts with featured items at the top
+   - `/blog` page: Displays all posts with blog posts at the top and articles below
    - `/blog/[slug]` dynamic route: Renders individual blog posts
    - Tailwind Typography plugin for styling Markdown content
 4. **Static Generation**:

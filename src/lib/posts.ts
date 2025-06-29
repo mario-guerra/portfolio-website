@@ -57,7 +57,7 @@ export function getAllPosts() {
         coverImage: data.coverImage || '',
         category: data.category || '',
         author: data.author || '',
-        featured: data.featured || false,
+        blogpost: data.blogpost || data.featured || false, // Support both blogpost and legacy featured flag
         tags: data.tags || [],
         readTime
       };
@@ -110,7 +110,7 @@ export async function getPostBySlug(slug: string) {
     coverImage: data.coverImage || '',
     category: data.category || '',
     author: data.author || '',
-    featured: data.featured || false,
+    blogpost: data.blogpost || data.featured || false, // Support both blogpost and legacy featured flag
     tags: data.tags || []
   };
 }

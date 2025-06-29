@@ -16,7 +16,7 @@ const blogPosts = getAllPosts().map((post, index) => ({
   imageUrl: post.coverImage || `https://placehold.co/800x450/${getColorForCategory(post.category)}/ffffff?text=${encodeURIComponent(post.category)}`,
   category: post.category,
   slug: post.slug,
-  featured: post.featured || false,
+  blogpost: post.blogpost || false,
 }));
 
 // Helper function to get a color based on category
@@ -36,10 +36,24 @@ function getColorForCategory(category: string = ''): string {
 }
 
 export default function Blog() {
-  // Featured posts
-  const featuredPosts = blogPosts.filter((post) => post.featured);
-  // Regular posts
-  const regularPosts = blogPosts.filter((post) => !post.featured);
+  // Blog posts
+  const blogPosts = getAllPosts().map((post, index) => ({
+    id: index + 1,
+    title: post.title,
+    excerpt: post.excerpt,
+    // Format the date more nicely without showing the year
+    date: new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric' }),
+    readTime: post.readTime || "5 min read", // Default if not specified
+    imageUrl: post.coverImage || `https://placehold.co/800x450/${getColorForCategory(post.category)}/ffffff?text=${encodeURIComponent(post.category)}`,
+    category: post.category,
+    slug: post.slug,
+    blogpost: post.blogpost || false,
+  }));
+
+  // Filter into blog posts and articles
+  const blogPostItems = blogPosts.filter((post) => post.blogpost);
+  // Articles
+  const articles = blogPosts.filter((post) => !post.blogpost);
 
   return (
     <>
@@ -51,7 +65,7 @@ export default function Blog() {
                   Blog & Articles
                 </h1>
                 <p className="mx-auto max-w-[700px] text-foreground/80 md:text-xl">
-                  Thoughts, insights, and perspectives on web development, design, and technology.
+                  Thoughts, insights, and perspectives on AI, developer-centric design, and technology.
                 </p>
               </div>
               <div className="flex flex-wrap items-center justify-center gap-2">
@@ -69,21 +83,21 @@ export default function Blog() {
           </div>
         </section>
         
-        {/* Featured Posts */}
-        {featuredPosts.length > 0 && (
+        {/* Blog Posts */}
+        {blogPostItems.length > 0 && (
           <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20">
             <div className="container px-4 md:px-6">
               <div className="flex flex-col items-start gap-4">
                 <div className="space-y-2">
                   <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                    Featured Articles
+                    Blog Posts
                   </h2>
                   <p className="max-w-[700px] text-foreground/80">
-                    A selection of my most popular and insightful articles.
+                    Insights and solutions from my experience in software development.
                   </p>
                 </div>
                 <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
-                  {featuredPosts.map((post) => (
+                  {blogPostItems.map((post) => (
                     <div
                       key={post.id}
                       className="group relative overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md"
@@ -137,14 +151,14 @@ export default function Blog() {
             <div className="flex flex-col items-start gap-4">
               <div className="space-y-2">
                 <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                  Latest Articles
+                  Articles
                 </h2>
                 <p className="max-w-[700px] text-foreground/80">
-                  Browse all my articles on development, design, and technology.
+                  My notes on best practices for developer-centric design, based on my experience. Mainly for my own reference, but I hope you find them useful too.
                 </p>
               </div>
               <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {regularPosts.map((post) => (
+                {articles.map((post) => (
                   <div
                     key={post.id}
                     className="group flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-md"
