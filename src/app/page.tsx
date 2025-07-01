@@ -1,7 +1,48 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { FiArrowRight, FiGithub, FiExternalLink } from "react-icons/fi";
+import { FiArrowRight, FiGithub, FiExternalLink, FiCode, FiLayout, FiCpu, FiDatabase, FiServer, FiGlobe, FiEdit, FiLayers, FiFeather, FiSettings, FiFileText, FiTerminal } from "react-icons/fi";
+import { SiTypescript, SiPython, SiSharp, SiNextdotjs, SiTailwindcss } from "react-icons/si";
 import avatarImage from "../../public/images/avatars/Mario_Guerra_avatar.png";
+
+// Define skill icon type
+type SkillIconType = 
+  | "SiTypescript" | "SiPython" | "SiSharp" | "SiNextdotjs" | "SiTailwindcss" 
+  | "SiMicrosoftazure" | "FiCode" | "FiCpu" | "FiEdit" | "FiLayers" 
+  | "FiServer" | "FiSettings" | "FiGlobe" | "FiFeather" | "FiLayout" 
+  | "FiDatabase" | "FiTerminal" | "FiFileText";
+
+// Function to get the right icon component
+const getSkillIcon = (iconType: SkillIconType) => {
+  switch(iconType) {
+    case "SiTypescript": return <SiTypescript className="h-6 w-6" />;
+    case "SiPython": return <SiPython className="h-6 w-6" />;
+    case "SiSharp": return <SiSharp className="h-6 w-6" />;
+    case "SiNextdotjs": return <SiNextdotjs className="h-6 w-6" />;
+    case "SiTailwindcss": return <SiTailwindcss className="h-6 w-6" />;
+    case "SiMicrosoftazure": return <FiServer className="h-6 w-6" />; // Fallback icon for Azure
+    case "FiCode": return <FiCode className="h-6 w-6" />;
+    case "FiCpu": return <FiCpu className="h-6 w-6" />;
+    case "FiEdit": return <FiEdit className="h-6 w-6" />;
+    case "FiLayers": return <FiLayers className="h-6 w-6" />;
+    case "FiServer": return <FiServer className="h-6 w-6" />;
+    case "FiSettings": return <FiSettings className="h-6 w-6" />;
+    case "FiGlobe": return <FiGlobe className="h-6 w-6" />;
+    case "FiFeather": return <FiFeather className="h-6 w-6" />;
+    case "FiLayout": return <FiLayout className="h-6 w-6" />;
+    case "FiDatabase": return <FiDatabase className="h-6 w-6" />;
+    case "FiTerminal": return <FiTerminal className="h-6 w-6" />;
+    case "FiFileText": return <FiFileText className="h-6 w-6" />;
+    default: return <FiCode className="h-6 w-6" />; // Default icon
+  }
+};
+
+// Define skill interface
+interface Skill {
+  name: string;
+  iconType: SkillIconType;
+}
 
 // Featured projects data
 const featuredProjects = [
@@ -163,28 +204,34 @@ export default function Home() {
           </div>
           <div className="mt-12">
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-              {["TypeScript", "Python", "C#", "Next.js", "Tailwind CSS", "Azure OpenAI", "Azure Cognitive Services", "TypeSpec", "RAG", "API Design", "Semantic Kernel", "Microsoft Graph API", "NLP", "VS Code Extension", "Responsive Design", "Knowledge Mining", "AI-Assisted Development", "Document Processing"].map((skill) => (
-                <div key={skill} className="flex flex-col items-center justify-center space-y-2 rounded-lg border border-border bg-card p-4 shadow-sm">
+              {(
+                [
+                  { name: "TypeScript", iconType: "SiTypescript" },
+                  { name: "Python", iconType: "SiPython" },
+                  { name: "C#", iconType: "SiSharp" },
+                  { name: "Next.js", iconType: "SiNextdotjs" },
+                  { name: "Tailwind CSS", iconType: "SiTailwindcss" },
+                  { name: "Azure OpenAI", iconType: "FiCpu" },
+                  { name: "Azure Cognitive Services", iconType: "SiMicrosoftazure" },
+                  { name: "TypeSpec", iconType: "FiEdit" },
+                  { name: "RAG", iconType: "FiLayers" },
+                  { name: "API Design", iconType: "FiServer" },
+                  { name: "Semantic Kernel", iconType: "FiSettings" },
+                  { name: "Microsoft Graph API", iconType: "FiGlobe" },
+                  { name: "NLP", iconType: "FiFeather" },
+                  { name: "VS Code Extension", iconType: "FiCode" },
+                  { name: "Responsive Design", iconType: "FiLayout" },
+                  { name: "Knowledge Mining", iconType: "FiDatabase" },
+                  { name: "AI-Assisted Development", iconType: "FiTerminal" },
+                  { name: "Document Processing", iconType: "FiFileText" }
+                ] as Skill[]
+              ).map((skill) => (
+                <div key={skill.name} className="flex flex-col items-center justify-center space-y-2 rounded-lg border border-border bg-card p-4 shadow-sm">
                   <div className="rounded-md bg-primary/10 p-2 text-primary">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-6 w-6"
-                    >
-                      <path d="M12 2 2 7l10 5 10-5-10-5Z" />
-                      <path d="m2 17 10 5 10-5" />
-                      <path d="m2 12 10 5 10-5" />
-                    </svg>
+                    {getSkillIcon(skill.iconType)}
                   </div>
                   <div className="text-center">
-                    <h3 className="text-sm font-medium">{skill}</h3>
+                    <h3 className="text-sm font-medium">{skill.name}</h3>
                   </div>
                 </div>
               ))}
