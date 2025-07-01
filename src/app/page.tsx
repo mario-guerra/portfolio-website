@@ -7,30 +7,30 @@ import avatarImage from "../../public/images/avatars/Mario_Guerra_avatar.png";
 const featuredProjects = [
 	{
 		id: 1,
-		title: "MultiModal Transformer",
-		description: "A state-of-the-art architecture for integrating vision and language understanding, with improved attention mechanisms.",
-		tags: ["PyTorch", "Computer Vision", "NLP", "Transformers"],
-		imageUrl: "https://placehold.co/600x400/9333ea/ffffff?text=MultiModal+Transformer",
-		githubUrl: "#",
-		liveUrl: "#",
+		title: "Modern Portfolio Website",
+		description: "A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS, created entirely using AI pair programming with Cline + GPT-4.1 and GitHub Copilot + Claude 3.7.",
+		tags: ["Next.js", "TypeScript", "Tailwind CSS", "Markdown", "Responsive Design"],
+		imageUrl: "/portfolio-website/images/avatars/Chad_Jipiti_Avatar.jpg",
+		githubUrl: "https://github.com/mario-guerra/portfolio-website",
+		liveUrl: "https://marioguerra.xyz/portfolio-website/",
 	},
 	{
 		id: 2,
-		title: "Neural Knowledge Retrieval",
-		description: "System for extracting and reasoning over knowledge embedded in large language models with improved retrieval accuracy.",
-		tags: ["TensorFlow", "Knowledge Graphs", "BERT", "Retrieval Augmentation"],
-		imageUrl: "https://placehold.co/600x400/4f46e5/ffffff?text=Neural+Knowledge",
-		githubUrl: "#",
-		liveUrl: "#",
+		title: "VibeSpec",
+		description: "VibeSpec is an AI-powered assistant that helps you create API definitions using TypeSpec from natural language descriptions. It converts your service ideas into structured, well-documented TypeSpec definitions that are ready to implement.",
+		tags: ["Azure OpenAI", "Azure Cognitive Services", "TypeSpec", "Python"],
+		imageUrl: "/portfolio-website/images/blog/typespec-first-vibe-code-second-build-apis-that-last/TypeSpec_First_Vibe_Second.jpeg",
+		githubUrl: "https://github.com/mario-guerra/vibespec",
+		liveUrl: "/portfolio-website/blog/typespec-first-vibe-code-second-build-apis-that-last",
 	},
 	{
 		id: 3,
-		title: "Responsible AI Framework",
-		description: "Comprehensive toolkit for evaluating and mitigating bias in language models, improving safety and fairness.",
-		tags: ["Python", "Ethics", "Model Evaluation", "Safety"],
-		imageUrl: "https://placehold.co/600x400/0ea5e9/ffffff?text=Responsible+AI",
-		githubUrl: "#",
-		liveUrl: "#",
+		title: "AI-Powered Audio Translation Service",
+		description: "A translation service that converts audio recordings between languages using Azure AI services, designed with TypeSpec as the blueprint and AI-assisted development.",
+		tags: ["TypeSpec", "Azure Cognitive Services", "API Design", "AI-Assisted Development", "C#"],
+		imageUrl: "/portfolio-website/images/blog/building-a-translation-service-with-typespec-and-ai-a-blueprint-approach/TypeSpec-AI-Translation-Service.jpeg",
+		githubUrl: "https://github.com/mario-guerra/translation-service",
+		liveUrl: "/portfolio-website/blog/building-a-translation-service-with-typespec-and-ai-a-blueprint-approach",
 	},
 ];
 
@@ -157,13 +157,13 @@ export default function Home() {
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">My Skills</h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                I specialize in these technologies and tools
+                Technologies and tools I specialize in
               </p>
             </div>
           </div>
           <div className="mt-12">
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-              {["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Tailwind CSS", "GraphQL", "MongoDB", "PostgreSQL", "Git", "Docker", "AWS"].map((skill) => (
+              {["TypeScript", "Python", "C#", "Next.js", "Tailwind CSS", "Azure OpenAI", "Azure Cognitive Services", "TypeSpec", "RAG", "API Design", "Semantic Kernel", "Microsoft Graph API", "NLP", "VS Code Extension", "Responsive Design", "Knowledge Mining", "AI-Assisted Development", "Document Processing"].map((skill) => (
                 <div key={skill} className="flex flex-col items-center justify-center space-y-2 rounded-lg border border-border bg-card p-4 shadow-sm">
                   <div className="rounded-md bg-primary/10 p-2 text-primary">
                     <svg
