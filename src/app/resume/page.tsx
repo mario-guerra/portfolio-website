@@ -1,6 +1,6 @@
 'use client';
 
-import { FiDownload, FiGithub, FiLinkedin, FiYoutube } from "react-icons/fi";
+import { FiDownload, FiGithub, FiLinkedin, FiYoutube, FiMail } from "react-icons/fi";
 import { useRef, useState } from "react";
 
 // Button component that will be hidden during PDF generation
@@ -153,6 +153,7 @@ export default function Resume() {
           pdf.setTextColor(0, 0, 0); // Ensure dark text
           
           const contactInfo = [
+            "marioguerra.xyz/contact",
             "github.com/mario-guerra",
             "linkedin.com/in/mario-guerra",
             "youtube.com/@thisismarioguerra"
@@ -391,6 +392,92 @@ export default function Resume() {
           pdf.setFont("helvetica", "normal");
           pdf.text("St. Mary's University", margin, yPos);
           
+          // Add Publications section if space permits, otherwise add a new page
+          if (yPos > pageHeight - margin - 60) {
+            pdf.addPage();
+            yPos = margin;
+          }
+          
+          // Publications section
+          yPos += 20;
+          addSection("Publications");
+          
+          // Array of publications with title and URL
+          const publications = [
+            {
+              title: "TypeSpec 1.0 GA - API-First, Made Practical",
+              description: "Highlighted TypeSpec's impact on scalable API development and developer productivity.",
+              url: "https://typespec.io/blog/typespec-1-0-GA-release/"
+            },
+            {
+              title: "TypeSpec First, Vibe Code Second",
+              description: "Explores 'vibe coding' and introduces TypeSpec as a structured approach to building APIs, combining AI code generation with robust design principles.",
+              url: "https://marioguerra.xyz/blog/typespec-first-vibe-code-second/"
+            },
+            {
+              title: "AI Document Summarization with Sliding Content Window",
+              description: "A practical solution for overcoming AI token limitations when summarizing large documents.",
+              url: "https://marioguerra.xyz/blog/ai-document-summarization-with-sliding-content-window/"
+            },
+            {
+              title: "Building Intelligent Chatbots with Microsoft Teams Data",
+              description: "Demonstrates how to extract Microsoft Teams channel data using the Graph API to build RAG-enhanced chatbots, improving productivity.",
+              url: "https://marioguerra.xyz/blog/building-intelligent-chatbots-with-microsoft-teams-data/"
+            },
+            {
+              title: "Audio Alchemy: Transcribing and Translating with Azure SDKs",
+              description: "Demonstrates how to translate and transcribe audio using Azure Cognitive Services and Azure OpenAI.",
+              url: "https://devblogs.microsoft.com/azure-sdk/transcribing-and-translating-with-azure-sdks/"
+            },
+            {
+              title: "Promoting APIs from Plumbing to Products",
+              description: "Perspective on elevating APIs from hidden infrastructure to polished products by prioritizing developer experience and usability.",
+              url: "https://marioguerra.xyz/blog/promoting-apis-from-plumbing-to-products/"
+            },
+            {
+              title: "API Strategy and Governance",
+              description: "Provided strategic guidance for effective API programs.",
+              url: "https://marioguerra.xyz/documentation/api_strategy_governance/"
+            },
+            {
+              title: "Making APIs Consumable by AI Agents",
+              description: "Strategies for designing APIs that can be effectively discovered, understood, and utilized by AI agents and LLMs.",
+              url: "https://marioguerra.xyz/documentation/making_apis_consumable_by_agents/"
+            }
+          ];
+          
+          // Add each publication with hyperlinks
+          for (const pub of publications) {
+            // Check if we need a page break
+            if (yPos > pageHeight - margin - 40) {
+              pdf.addPage();
+              yPos = margin;
+            }
+            
+            // Add title with hyperlink
+            pdf.setFontSize(12);
+            pdf.setFont("helvetica", "bold");
+            pdf.setTextColor(0, 0, 150); // Blue color for hyperlinks
+            
+            // Add title as hyperlink
+            const title = pub.title;
+            const titleWidth = pdf.getStringUnitWidth(title) * 12 / pdf.internal.scaleFactor;
+            pdf.link(margin, yPos - 12, titleWidth, 14, { url: pub.url });
+            pdf.text(title, margin, yPos);
+            
+            // Add description in black
+            yPos += lineHeight;
+            pdf.setTextColor(0, 0, 0); // Reset to black
+            pdf.setFontSize(11);
+            pdf.setFont("helvetica", "normal");
+            
+            const descLines = pdf.splitTextToSize(pub.description, contentWidth - 5);
+            pdf.text(descLines, margin, yPos);
+            
+            // Move down with extra spacing between publications
+            yPos += (lineHeight * descLines.length) + 12;
+          }
+          
           // Save and download the PDF
           pdf.save("mario_guerra_resume.pdf");
         }
@@ -425,6 +512,12 @@ export default function Resume() {
                   </div>
                 </div>
                 <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
+                  <div className="flex items-center text-sm text-foreground/80">
+                    <FiMail className="mr-1 h-4 w-4" />
+                    <a href="https://marioguerra.xyz/contact" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                      marioguerra.xyz/contact
+                    </a>
+                  </div>
                   <div className="flex items-center text-sm text-foreground/80">
                     <FiGithub className="mr-1 h-4 w-4" />
                     <a href="https://github.com/mario-guerra" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
