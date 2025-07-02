@@ -43,7 +43,7 @@ export default function Resume() {
           // A4 page dimensions in points
           const pageWidth = pdf.internal.pageSize.getWidth();
           const pageHeight = pdf.internal.pageSize.getHeight();
-          const margin = 50; // Slightly larger margins for better readability
+          const margin = 40; // Reduced margins to maximize text width
           const contentWidth = pageWidth - (margin * 2);
           
           // Set consistent default text color to pure black for better readability
@@ -54,7 +54,7 @@ export default function Resume() {
           
           // Current vertical position for content
           let yPos = margin;
-          const lineHeight = 14;
+          const lineHeight = 12; // Reduced line height to make text more compact
           
           // Simple function to add text and handle overflow
           interface AddTextOptions {
@@ -87,28 +87,28 @@ export default function Resume() {
           }
 
           const addSection = (title: string): void => {
-            // Add more spacing before section for better visual separation
-            yPos += 20;
+            // Add less spacing before section
+            yPos += 14;
             
             // Check if we need a page break - with enough room for title and some content
-            if (yPos > pageHeight - margin - 80) { // Increased space required to avoid bad breaks
+            if (yPos > pageHeight - margin - 70) { // Slightly reduced space required
               pdf.addPage();
               yPos = margin;
             }
             
             // Add a section title with more prominence
-            pdf.setFontSize(16);
+            pdf.setFontSize(14); // Reduced font size for section headers
             pdf.setFont("helvetica", "bold");
             pdf.setTextColor(0, 0, 0); // Pure black for section titles
             pdf.text(title.toUpperCase(), margin, yPos); // Uppercase for better visual hierarchy
-            yPos += lineHeight + 5;
+            yPos += lineHeight + 3; // Reduced spacing
             
             // Add a thicker line under the section title
             pdf.setDrawColor(0, 0, 0);
             pdf.setLineWidth(0.75);
-            pdf.line(margin, yPos - 5, margin + 200, yPos - 5); // Longer line
+            pdf.line(margin, yPos - 4, margin + 180, yPos - 4); // Slightly shorter line
             
-            yPos += 8; // More space after the line
+            yPos += 6; // Less space after the line
             
             // Reset text color for content
             pdf.setTextColor(0, 0, 0);
@@ -126,53 +126,89 @@ export default function Resume() {
               yPos = margin;
             }
             
-            pdf.setFontSize(11);
+            pdf.setFontSize(10); // Reduced font size for bullet points
             pdf.setFont("helvetica", "normal");
             pdf.setTextColor(0, 0, 0); // Ensure consistent dark text
             
             // Split text into multiple lines if too long - slightly reduced width for better line length
-            const textLines: string[] = pdf.splitTextToSize(text, contentWidth - 20);
+            const textLines: string[] = pdf.splitTextToSize(text, contentWidth - 15); // Slightly wider content
             
             // Add bullet and indent text
-            pdf.circle(margin + 4, yPos - 3, 1.2, 'F'); // Circle bullet instead of text bullet
-            pdf.text(textLines, margin + 15, yPos);
+            pdf.circle(margin + 3, yPos - 3, 1, 'F'); // Smaller bullet
+            pdf.text(textLines, margin + 12, yPos); // Less indentation
             
-            // Move down based on number of lines with a little extra spacing
-            yPos += (lineHeight * textLines.length) + 2;
+            // Move down based on number of lines with minimal extra spacing
+            yPos += (lineHeight * textLines.length) + 1; // Reduced extra spacing
           };
           
           // Extract and simplify the content from the resume
           
           // Add name and title
-          addText("Mario Guerra", 24, "bold");
-          addText("Technical Product Manager", 16, "normal");
-          yPos += 15;
+          addText("Mario Guerra", 20, "bold"); // Reduced name font size
+          addText("Technical Product Manager", 14, "normal"); // Reduced title font size
+          yPos += 10; // Less spacing after title
           
-          // Add contact information in a single line with better spacing and formatting
-          pdf.setFontSize(10);
-          pdf.setTextColor(0, 0, 0); // Ensure dark text
+          // Add contact information in a single line with better spacing and formatting with hyperlinks
+          pdf.setFontSize(9); // Smaller font size for contact info
+          pdf.setTextColor(0, 0, 150); // Blue color for hyperlinks
           
           const contactInfo = [
-            "marioguerra.xyz/contact",
-            "github.com/mario-guerra",
-            "linkedin.com/in/mario-guerra",
-            "youtube.com/@thisismarioguerra"
+            { text: "marioguerra.xyz/contact", url: "https://marioguerra.xyz/contact" },
+            { text: "github.com/mario-guerra", url: "https://github.com/mario-guerra" },
+            { text: "linkedin.com/in/mario-guerra", url: "https://linkedin.com/in/mario-guerra" },
+            { text: "youtube.com/@thisismarioguerra", url: "https://youtube.com/@thisismarioguerra" }
           ];
-          pdf.text(contactInfo.join(" | "), margin, yPos);
-          yPos += 25;
+          
+          // Calculate positions for each link
+          let currentX = margin;
+          const separator = " | ";
+          
+          // Add each contact info with hyperlink
+          contactInfo.forEach((contact, index) => {
+            // Calculate width of this text item
+            const textWidth = pdf.getStringUnitWidth(contact.text) * 9 / pdf.internal.scaleFactor;
+            
+            // Add the hyperlink
+            pdf.link(currentX, yPos - 8, textWidth, 10, { url: contact.url });
+            
+            // Add the text
+            pdf.text(contact.text, currentX, yPos);
+            
+            // Move position for next item
+            currentX += textWidth;
+            
+            // Add separator if not the last item
+            if (index < contactInfo.length - 1) {
+              pdf.setTextColor(0, 0, 0); // Black for separator
+              pdf.text(separator, currentX, yPos);
+              currentX += pdf.getStringUnitWidth(separator) * 9 / pdf.internal.scaleFactor;
+              pdf.setTextColor(0, 0, 150); // Back to blue for links
+            }
+          });
+          
+          // Reset text color
+          pdf.setTextColor(0, 0, 0);
+          yPos += 18; // Less spacing after contact info
           
           // Professional Summary
           addSection("Professional Summary");
+          // Ensure text uses full width by setting explicit font before calculating width
+          pdf.setFontSize(10); // Smaller font size for summary
+          pdf.setFont("helvetica", "normal");
+          
           const summaryText = "Technical Product Manager with over 15 years of experience driving innovation in developer tools, APIs, AI-driven solutions, and scalable infrastructure. Proven ability to lead cross-functional teams, influence stakeholders, and deliver impactful solutions that align technical capabilities with business needs.";
-          const summaryLines = pdf.splitTextToSize(summaryText, contentWidth);
-          pdf.setFontSize(11);
+          // Use the exact contentWidth for text wrapping, ensure it fills the available space
+          // Explicitly set the width to be slightly less than contentWidth to account for any internal padding
+          const textWidth = contentWidth - 3; // Smaller buffer to use more space
+          const summaryLines = pdf.splitTextToSize(summaryText, textWidth);
           pdf.text(summaryLines, margin, yPos);
-          yPos += (lineHeight * summaryLines.length) + 5;
+          yPos += (lineHeight * summaryLines.length) + 3; // Less spacing between paragraphs
           
           const summaryText2 = "At Microsoft, I spearheaded the zero-to-one launch of TypeSpec—a high-level API language and code-gen framework now adopted by over 30% of Azure services to produce SDKs for C#, Java, .NET, JavaScript, Rust, and Go — cutting SDK development and API review time by 30%.";
-          const summaryLines2 = pdf.splitTextToSize(summaryText2, contentWidth);
+          // Use the same textWidth for consistent paragraph formatting
+          const summaryLines2 = pdf.splitTextToSize(summaryText2, textWidth);
           pdf.text(summaryLines2, margin, yPos);
-          yPos += (lineHeight * summaryLines2.length) + 10;
+          yPos += (lineHeight * summaryLines2.length) + 6; // Less spacing after summary section
           
           // Key Skills section
           addSection("Key Skills");
@@ -181,13 +217,13 @@ export default function Resume() {
           const colWidth = (contentWidth - 15) / 2;
           
           // Technical Expertise title
-          pdf.setFontSize(12);
+          pdf.setFontSize(11); // Reduced font size for skill headers
           pdf.setFont("helvetica", "bold");
           pdf.text("Technical Expertise", margin, yPos);
           
           // Product & Leadership title
           pdf.text("Product & Leadership", margin + colWidth + 15, yPos);
-          yPos += lineHeight + 5;
+          yPos += lineHeight + 2; // Less spacing after skill headers
           
           // Save position to align columns
           const skillsStartY = yPos;
@@ -215,36 +251,36 @@ export default function Resume() {
           
           // Add technical skills
           pdf.setFont("helvetica", "normal");
-          pdf.setFontSize(11);
+          pdf.setFontSize(9.5); // Smaller font size for skills
           
           for (const skill of techSkills) {
             // Split text to multiple lines if needed
-            const textLines = pdf.splitTextToSize(skill, colWidth - 15);
+            const textLines = pdf.splitTextToSize(skill, colWidth - 12);
             
             // Add bullet and text
             pdf.text("•", margin, techSkillsY);
-            pdf.text(textLines, margin + 15, techSkillsY);
+            pdf.text(textLines, margin + 12, techSkillsY);
             
-            // Move down based on number of lines
-            techSkillsY += (lineHeight * textLines.length);
+            // Move down based on number of lines with less spacing
+            techSkillsY += (lineHeight * textLines.length) - 1; // Reduced spacing between skills
           }
           
           // Add leadership skills in second column
           let leadershipSkillsY = skillsStartY;
           for (const skill of leadershipSkills) {
             // Split text to multiple lines if needed
-            const textLines = pdf.splitTextToSize(skill, colWidth - 15);
+            const textLines = pdf.splitTextToSize(skill, colWidth - 12);
             
-            // Add bullet and text in second column
+            // Add bullet and text in second column with less spacing
             pdf.text("•", margin + colWidth + 15, leadershipSkillsY);
-            pdf.text(textLines, margin + colWidth + 30, leadershipSkillsY);
+            pdf.text(textLines, margin + colWidth + 27, leadershipSkillsY);
             
-            // Move down based on number of lines
-            leadershipSkillsY += (lineHeight * textLines.length);
+            // Move down based on number of lines with less spacing
+            leadershipSkillsY += (lineHeight * textLines.length) - 1; // Reduced spacing between skills
           }
           
-          // Update yPos to the highest column
-          yPos = Math.max(techSkillsY, leadershipSkillsY) + 10;
+          // Update yPos to the highest column with less spacing after
+          yPos = Math.max(techSkillsY, leadershipSkillsY) + 6;
           
           // Key Projects section
           addSection("Key Projects");
@@ -277,49 +313,49 @@ export default function Resume() {
             }
           ];
           
-          // Add each project with enhanced formatting
+          // Add each project with enhanced formatting but more compact
           for (const project of projects) {
             // Check if we need a page break with more space to avoid breaking mid-project
-            if (yPos > pageHeight - margin - 60) {
+            if (yPos > pageHeight - margin - 50) {
               pdf.addPage();
               yPos = margin;
             }
             
             // Add project title with better visual distinction
-            pdf.setFontSize(12);
+            pdf.setFontSize(10.5); // Smaller font for project titles
             pdf.setFont("helvetica", "bold");
             pdf.setTextColor(0, 0, 0);
             pdf.text(project.title, margin, yPos);
-            yPos += lineHeight;
+            yPos += lineHeight - 2; // Less space after title
             
             // Add description with consistent text color
-            pdf.setFontSize(11);
+            pdf.setFontSize(9.5); // Smaller font for project descriptions
             pdf.setFont("helvetica", "normal");
             pdf.setTextColor(0, 0, 0);
             
             // Calculate lines with slightly reduced width for better readability
-            const descLines = pdf.splitTextToSize(project.description, contentWidth - 5);
+            const descLines = pdf.splitTextToSize(project.description, contentWidth - 3);
             
             // Add slight indent for description
             pdf.text(descLines, margin + 5, yPos);
             
-            // Move down with extra spacing between projects
-            yPos += (lineHeight * descLines.length) + 14;
+            // Move down with less spacing between projects
+            yPos += (lineHeight * descLines.length) + 8; // Reduced spacing between projects
           }
           
           // Work Experience section
           addSection("Work Experience");
           
           // Add Microsoft experience
-          pdf.setFontSize(12);
+          pdf.setFontSize(10.5); // Reduced font size for job title
           pdf.setFont("helvetica", "bold");
           pdf.text("Senior Product Manager - TypeSpec API Definition Language", margin, yPos);
-          yPos += lineHeight;
+          yPos += lineHeight - 2; // Less spacing after title
           
-          pdf.setFontSize(11);
+          pdf.setFontSize(10); // Reduced font size for company/date
           pdf.setFont("helvetica", "normal");
           pdf.text("Microsoft | June 2021 - Present", margin, yPos);
-          yPos += lineHeight + 5;
+          yPos += lineHeight + 2; // Less spacing after company/date
           
           // Microsoft responsibilities
           const msResponsibilities = [
@@ -337,20 +373,20 @@ export default function Resume() {
           yPos += 10;
           
           // Add Qualcomm experience
-          if (yPos > pageHeight - margin - 70) {
+          if (yPos > pageHeight - margin - 60) {
             pdf.addPage();
             yPos = margin;
           }
           
-          pdf.setFontSize(12);
+          pdf.setFontSize(10.5); // Reduced font size for job title
           pdf.setFont("helvetica", "bold");
           pdf.text("Principal Software Engineer / Manager", margin, yPos);
-          yPos += lineHeight;
+          yPos += lineHeight - 2; // Less spacing after title
           
-          pdf.setFontSize(11);
+          pdf.setFontSize(10); // Reduced font size for company/date
           pdf.setFont("helvetica", "normal");
           pdf.text("Qualcomm | June 2008 - June 2021", margin, yPos);
-          yPos += lineHeight + 5;
+          yPos += lineHeight + 2; // Less spacing after company/date
           
           // Qualcomm responsibilities
           const qualcommResponsibilities = [
@@ -370,25 +406,25 @@ export default function Resume() {
           }
           
           // Education section
-          yPos += 10;
+          yPos += 6; // Less spacing before education section
           addSection("Education");
           
-          pdf.setFontSize(12);
+          pdf.setFontSize(10.5); // Smaller font size for degree
           pdf.setFont("helvetica", "bold");
           pdf.text("Masters of Engineering, Embedded Systems", margin, yPos);
-          yPos += lineHeight;
+          yPos += lineHeight - 2; // Less spacing
           
-          pdf.setFontSize(11);
+          pdf.setFontSize(10); // Smaller font size for school
           pdf.setFont("helvetica", "normal");
           pdf.text("Arizona State University", margin, yPos);
-          yPos += lineHeight + 5;
+          yPos += lineHeight + 3; // Less spacing
           
-          pdf.setFontSize(12);
+          pdf.setFontSize(10.5); // Smaller font size for degree
           pdf.setFont("helvetica", "bold");
           pdf.text("Bachelor of Science, Computer Engineering", margin, yPos);
-          yPos += lineHeight;
+          yPos += lineHeight - 2; // Less spacing
           
-          pdf.setFontSize(11);
+          pdf.setFontSize(10); // Smaller font size for school
           pdf.setFont("helvetica", "normal");
           pdf.text("St. Mary's University", margin, yPos);
           
@@ -399,7 +435,7 @@ export default function Resume() {
           }
           
           // Publications section
-          yPos += 20;
+          yPos += 10; // Less spacing before publications section
           addSection("Publications");
           
           // Array of publications with title and URL
@@ -446,36 +482,36 @@ export default function Resume() {
             }
           ];
           
-          // Add each publication with hyperlinks
+          // Add each publication with hyperlinks - more compact layout
           for (const pub of publications) {
             // Check if we need a page break
-            if (yPos > pageHeight - margin - 40) {
+            if (yPos > pageHeight - margin - 35) {
               pdf.addPage();
               yPos = margin;
             }
             
             // Add title with hyperlink
-            pdf.setFontSize(12);
+            pdf.setFontSize(10); // Smaller font size for publication titles
             pdf.setFont("helvetica", "bold");
             pdf.setTextColor(0, 0, 150); // Blue color for hyperlinks
             
             // Add title as hyperlink
             const title = pub.title;
-            const titleWidth = pdf.getStringUnitWidth(title) * 12 / pdf.internal.scaleFactor;
-            pdf.link(margin, yPos - 12, titleWidth, 14, { url: pub.url });
+            const titleWidth = pdf.getStringUnitWidth(title) * 10 / pdf.internal.scaleFactor;
+            pdf.link(margin, yPos - 10, titleWidth, 12, { url: pub.url });
             pdf.text(title, margin, yPos);
             
             // Add description in black
-            yPos += lineHeight;
+            yPos += lineHeight - 2; // Less spacing after title
             pdf.setTextColor(0, 0, 0); // Reset to black
-            pdf.setFontSize(11);
+            pdf.setFontSize(9); // Smaller font for publication descriptions
             pdf.setFont("helvetica", "normal");
             
-            const descLines = pdf.splitTextToSize(pub.description, contentWidth - 5);
+            const descLines = pdf.splitTextToSize(pub.description, contentWidth - 3);
             pdf.text(descLines, margin, yPos);
             
-            // Move down with extra spacing between publications
-            yPos += (lineHeight * descLines.length) + 12;
+            // Move down with less spacing between publications
+            yPos += (lineHeight * descLines.length) + 6; // Less spacing between publications
           }
           
           // Save and download the PDF
@@ -503,7 +539,7 @@ export default function Resume() {
                     <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                       Mario Guerra
                     </h1>
-                    <p className="text-foreground/80">Technical Product Manager</p>
+                    <p className="text-foreground/80">Technical Product Manager & AI Enthusiast</p>
                   </div>
                   <div className="flex flex-col gap-2 sm:items-end">
                     {!isPrinting && (
