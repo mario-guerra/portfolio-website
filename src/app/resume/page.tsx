@@ -1,9 +1,412 @@
-import { FiDownload, FiGithub, FiLinkedin, FiMail, FiPhone, FiYoutube } from "react-icons/fi";
+'use client';
+
+import { FiDownload, FiGithub, FiLinkedin, FiYoutube } from "react-icons/fi";
+import { useRef, useState } from "react";
+
+// Button component that will be hidden during PDF generation
+const DownloadButton = ({ onClick }: { onClick: () => void }) => (
+  <button
+    onClick={onClick}
+    className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+  >
+    <FiDownload className="mr-2 h-4 w-4" />
+    Download Resume
+  </button>
+);
 
 export default function Resume() {
+  const resumeRef = useRef<HTMLDivElement>(null);
+  const [isPrinting, setIsPrinting] = useState(false);
+
+  const handleDownload = async () => {
+    if (typeof window !== "undefined") {
+      try {
+        // Set printing state to hide the download button
+        setIsPrinting(true);
+        
+        // Small delay to ensure state update has applied
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        const { default: jsPDF } = await import("jspdf");
+        // We don't need jspdf-autotable for our direct PDF creation approach
+        
+        if (resumeRef.current) {
+          // Create a new PDF document with better default settings
+          const pdf = new jsPDF({
+            orientation: "portrait",
+            unit: "pt",
+            format: "a4",
+            compress: true,
+            floatPrecision: 16 // Higher precision for better text positioning
+          });
+          
+          // A4 page dimensions in points
+          const pageWidth = pdf.internal.pageSize.getWidth();
+          const pageHeight = pdf.internal.pageSize.getHeight();
+          const margin = 50; // Slightly larger margins for better readability
+          const contentWidth = pageWidth - (margin * 2);
+          
+          // Set consistent default text color to pure black for better readability
+          pdf.setTextColor(0, 0, 0);
+          
+          // Set font to Helvetica for clean, readable text
+          pdf.setFont("helvetica");
+          
+          // Current vertical position for content
+          let yPos = margin;
+          const lineHeight = 14;
+          
+          // Simple function to add text and handle overflow
+          interface AddTextOptions {
+            text: string;
+            size: number;
+            style?: "normal" | "bold" | "italic" | "bolditalic";
+          }
+
+          const addText = (
+            text: string,
+            size: number,
+            style: "normal" | "bold" | "italic" | "bolditalic" = "normal"
+          ): void => {
+            pdf.setFontSize(size);
+            pdf.setFont("helvetica", style);
+
+            // Check if we need a page break
+            if (yPos > pageHeight - margin) {
+              pdf.addPage();
+              yPos = margin;
+            }
+
+            pdf.text(text, margin, yPos);
+            yPos += lineHeight + (size / 2);
+          };
+          
+          // Add section with title - enhanced for better visual separation
+          interface AddSectionOptions {
+            title: string;
+          }
+
+          const addSection = (title: string): void => {
+            // Add more spacing before section for better visual separation
+            yPos += 20;
+            
+            // Check if we need a page break - with enough room for title and some content
+            if (yPos > pageHeight - margin - 80) { // Increased space required to avoid bad breaks
+              pdf.addPage();
+              yPos = margin;
+            }
+            
+            // Add a section title with more prominence
+            pdf.setFontSize(16);
+            pdf.setFont("helvetica", "bold");
+            pdf.setTextColor(0, 0, 0); // Pure black for section titles
+            pdf.text(title.toUpperCase(), margin, yPos); // Uppercase for better visual hierarchy
+            yPos += lineHeight + 5;
+            
+            // Add a thicker line under the section title
+            pdf.setDrawColor(0, 0, 0);
+            pdf.setLineWidth(0.75);
+            pdf.line(margin, yPos - 5, margin + 200, yPos - 5); // Longer line
+            
+            yPos += 8; // More space after the line
+            
+            // Reset text color for content
+            pdf.setTextColor(0, 0, 0);
+          };
+          
+          // Function to add bullet point item - enhanced for better readability
+          interface AddBulletPointOptions {
+            text: string;
+          }
+
+          const addBulletPoint = (text: string): void => {
+            // Check if we need a page break - with more space to avoid breaking mid-item
+            if (yPos > pageHeight - margin - 20) {
+              pdf.addPage();
+              yPos = margin;
+            }
+            
+            pdf.setFontSize(11);
+            pdf.setFont("helvetica", "normal");
+            pdf.setTextColor(0, 0, 0); // Ensure consistent dark text
+            
+            // Split text into multiple lines if too long - slightly reduced width for better line length
+            const textLines: string[] = pdf.splitTextToSize(text, contentWidth - 20);
+            
+            // Add bullet and indent text
+            pdf.circle(margin + 4, yPos - 3, 1.2, 'F'); // Circle bullet instead of text bullet
+            pdf.text(textLines, margin + 15, yPos);
+            
+            // Move down based on number of lines with a little extra spacing
+            yPos += (lineHeight * textLines.length) + 2;
+          };
+          
+          // Extract and simplify the content from the resume
+          
+          // Add name and title
+          addText("Mario Guerra", 24, "bold");
+          addText("Technical Product Manager", 16, "normal");
+          yPos += 15;
+          
+          // Add contact information in a single line with better spacing and formatting
+          pdf.setFontSize(10);
+          pdf.setTextColor(0, 0, 0); // Ensure dark text
+          
+          const contactInfo = [
+            "github.com/mario-guerra",
+            "linkedin.com/in/mario-guerra",
+            "youtube.com/@thisismarioguerra"
+          ];
+          pdf.text(contactInfo.join(" | "), margin, yPos);
+          yPos += 25;
+          
+          // Professional Summary
+          addSection("Professional Summary");
+          const summaryText = "Technical Product Manager with over 15 years of experience driving innovation in developer tools, APIs, AI-driven solutions, and scalable infrastructure. Proven ability to lead cross-functional teams, influence stakeholders, and deliver impactful solutions that align technical capabilities with business needs.";
+          const summaryLines = pdf.splitTextToSize(summaryText, contentWidth);
+          pdf.setFontSize(11);
+          pdf.text(summaryLines, margin, yPos);
+          yPos += (lineHeight * summaryLines.length) + 5;
+          
+          const summaryText2 = "At Microsoft, I spearheaded the zero-to-one launch of TypeSpec—a high-level API language and code-gen framework now adopted by over 30% of Azure services to produce SDKs for C#, Java, .NET, JavaScript, Rust, and Go — cutting SDK development and API review time by 30%.";
+          const summaryLines2 = pdf.splitTextToSize(summaryText2, contentWidth);
+          pdf.text(summaryLines2, margin, yPos);
+          yPos += (lineHeight * summaryLines2.length) + 10;
+          
+          // Key Skills section
+          addSection("Key Skills");
+          
+          // Add two columns for skills
+          const colWidth = (contentWidth - 15) / 2;
+          
+          // Technical Expertise title
+          pdf.setFontSize(12);
+          pdf.setFont("helvetica", "bold");
+          pdf.text("Technical Expertise", margin, yPos);
+          
+          // Product & Leadership title
+          pdf.text("Product & Leadership", margin + colWidth + 15, yPos);
+          yPos += lineHeight + 5;
+          
+          // Save position to align columns
+          const skillsStartY = yPos;
+          let techSkillsY = yPos;
+          
+          // Technical Expertise bullets
+          const techSkills = [
+            "APIs, LLMs, RAG, Distributed Systems",
+            "Python, C/C++, Rust, Azure, Cloud Computing",
+            "OpenAPI Specification, Secure API Design",
+            "LLMOps, Prompt Management, Data Processing",
+            "Azure Foundry, Cosmos DB, Power BI, DevOps",
+            "CI/CD Automation, GitHub, Security Standards"
+          ];
+          
+          // Product & Leadership bullets
+          const leadershipSkills = [
+            "Developer Tools, API-First Strategies",
+            "Cross-Functional Team Leadership",
+            "Data-Driven Decision Making",
+            "Developer Advocacy, Community Engagement",
+            "Strategic Product Thinking, Roadmapping",
+            "Stakeholder Alignment, Requirements Gathering"
+          ];
+          
+          // Add technical skills
+          pdf.setFont("helvetica", "normal");
+          pdf.setFontSize(11);
+          
+          for (const skill of techSkills) {
+            // Split text to multiple lines if needed
+            const textLines = pdf.splitTextToSize(skill, colWidth - 15);
+            
+            // Add bullet and text
+            pdf.text("•", margin, techSkillsY);
+            pdf.text(textLines, margin + 15, techSkillsY);
+            
+            // Move down based on number of lines
+            techSkillsY += (lineHeight * textLines.length);
+          }
+          
+          // Add leadership skills in second column
+          let leadershipSkillsY = skillsStartY;
+          for (const skill of leadershipSkills) {
+            // Split text to multiple lines if needed
+            const textLines = pdf.splitTextToSize(skill, colWidth - 15);
+            
+            // Add bullet and text in second column
+            pdf.text("•", margin + colWidth + 15, leadershipSkillsY);
+            pdf.text(textLines, margin + colWidth + 30, leadershipSkillsY);
+            
+            // Move down based on number of lines
+            leadershipSkillsY += (lineHeight * textLines.length);
+          }
+          
+          // Update yPos to the highest column
+          yPos = Math.max(techSkillsY, leadershipSkillsY) + 10;
+          
+          // Key Projects section
+          addSection("Key Projects");
+          
+          // Array of projects
+          const projects = [
+            {
+              title: "TypeSpec 1.0 Launch (Microsoft)",
+              description: "Led the zero-to-one launch of TypeSpec, delivering an API definition language that achieved 8-10x code reduction and 30% faster review times, delivering measurable developer productivity."
+            },
+            {
+              title: "RAG-Enhanced Chatbots with Microsoft Teams Data",
+              description: "Built RAG-enhanced chatbots using Graph API and Azure Foundry, leveraging LLMs to optimize workflows and demonstrate API-driven user support with secure data exchange."
+            },
+            {
+              title: "@azure Functionality in GitHub Copilot",
+              description: "Contributed to LLM-driven API integrations, enhancing developer productivity through context-aware code suggestions with secure data handling."
+            },
+            {
+              title: "AI Document Summarization (Personal Project)",
+              description: "Developed an LLM-based solution to summarize large documents, optimizing data pipelines for efficient, secure processing with a sliding window approach."
+            },
+            {
+              title: "Power BI Analytics for TypeSpec (Microsoft)",
+              description: "Designed Power BI dashboards to track TypeSpec telemetry from VS Code extensions, enabling data-driven insights for developer productivity."
+            },
+            {
+              title: "Hexagon DSP Toolchain Modernization (Qualcomm)",
+              description: "Directed transition to LLVM, optimizing developer workflows and ensuring reliable infrastructure for millions of Snapdragon devices."
+            }
+          ];
+          
+          // Add each project with enhanced formatting
+          for (const project of projects) {
+            // Check if we need a page break with more space to avoid breaking mid-project
+            if (yPos > pageHeight - margin - 60) {
+              pdf.addPage();
+              yPos = margin;
+            }
+            
+            // Add project title with better visual distinction
+            pdf.setFontSize(12);
+            pdf.setFont("helvetica", "bold");
+            pdf.setTextColor(0, 0, 0);
+            pdf.text(project.title, margin, yPos);
+            yPos += lineHeight;
+            
+            // Add description with consistent text color
+            pdf.setFontSize(11);
+            pdf.setFont("helvetica", "normal");
+            pdf.setTextColor(0, 0, 0);
+            
+            // Calculate lines with slightly reduced width for better readability
+            const descLines = pdf.splitTextToSize(project.description, contentWidth - 5);
+            
+            // Add slight indent for description
+            pdf.text(descLines, margin + 5, yPos);
+            
+            // Move down with extra spacing between projects
+            yPos += (lineHeight * descLines.length) + 14;
+          }
+          
+          // Work Experience section
+          addSection("Work Experience");
+          
+          // Add Microsoft experience
+          pdf.setFontSize(12);
+          pdf.setFont("helvetica", "bold");
+          pdf.text("Senior Product Manager - TypeSpec API Definition Language", margin, yPos);
+          yPos += lineHeight;
+          
+          pdf.setFontSize(11);
+          pdf.setFont("helvetica", "normal");
+          pdf.text("Microsoft | June 2021 - Present", margin, yPos);
+          yPos += lineHeight + 5;
+          
+          // Microsoft responsibilities
+          const msResponsibilities = [
+            "Drive product vision and strategy for TypeSpec, an open-source API definition language transforming API development.",
+            "Define and execute a long-term roadmap, aligning with company goals and customer needs.",
+            "Guide Azure service teams as a member of the Azure API Stewardship Board, driving best practices for API development.",
+            "Conduct user research to identify pain points and translate insights into actionable product features.",
+            "Define key performance indicators (KPIs) to measure product success and iterate based on real-world usage."
+          ];
+          
+          for (const item of msResponsibilities) {
+            addBulletPoint(item);
+          }
+          
+          yPos += 10;
+          
+          // Add Qualcomm experience
+          if (yPos > pageHeight - margin - 70) {
+            pdf.addPage();
+            yPos = margin;
+          }
+          
+          pdf.setFontSize(12);
+          pdf.setFont("helvetica", "bold");
+          pdf.text("Principal Software Engineer / Manager", margin, yPos);
+          yPos += lineHeight;
+          
+          pdf.setFontSize(11);
+          pdf.setFont("helvetica", "normal");
+          pdf.text("Qualcomm | June 2008 - June 2021", margin, yPos);
+          yPos += lineHeight + 5;
+          
+          // Qualcomm responsibilities
+          const qualcommResponsibilities = [
+            "Led the development of tools and platforms for Qualcomm's Hexagon DSP, the core of Snapdragon modem and Neural Processing Unit technology.",
+            "Served as de-facto product manager for Hexagon tools used by first-party software development teams.",
+            "Improved on-time delivery by 35% through the implementation of data-driven development processes."
+          ];
+          
+          for (const item of qualcommResponsibilities) {
+            addBulletPoint(item);
+          }
+          
+          // Add Education section if space permits, otherwise add a new page
+          if (yPos > pageHeight - margin - 60) {
+            pdf.addPage();
+            yPos = margin;
+          }
+          
+          // Education section
+          yPos += 10;
+          addSection("Education");
+          
+          pdf.setFontSize(12);
+          pdf.setFont("helvetica", "bold");
+          pdf.text("Masters of Engineering, Embedded Systems", margin, yPos);
+          yPos += lineHeight;
+          
+          pdf.setFontSize(11);
+          pdf.setFont("helvetica", "normal");
+          pdf.text("Arizona State University", margin, yPos);
+          yPos += lineHeight + 5;
+          
+          pdf.setFontSize(12);
+          pdf.setFont("helvetica", "bold");
+          pdf.text("Bachelor of Science, Computer Engineering", margin, yPos);
+          yPos += lineHeight;
+          
+          pdf.setFontSize(11);
+          pdf.setFont("helvetica", "normal");
+          pdf.text("St. Mary's University", margin, yPos);
+          
+          // Save and download the PDF
+          pdf.save("mario_guerra_resume.pdf");
+        }
+      } catch (error) {
+        console.error("Error generating PDF:", error);
+      } finally {
+        // Reset printing state
+        setIsPrinting(false);
+      }
+    }
+  };
+
   return (
     <>
-      <section className="w-full py-12 md:py-24 lg:py-32">
+      <div ref={resumeRef}>
+        <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="mx-auto max-w-3xl space-y-8">
               {/* Header */}
@@ -16,14 +419,9 @@ export default function Resume() {
                     <p className="text-foreground/80">Technical Product Manager</p>
                   </div>
                   <div className="flex flex-col gap-2 sm:items-end">
-                    <a
-                      href="/resume.pdf"
-                      download
-                      className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                    >
-                      <FiDownload className="mr-2 h-4 w-4" />
-                      Download Resume
-                    </a>
+                    {!isPrinting && (
+                      <DownloadButton onClick={handleDownload} />
+                    )}
                   </div>
                 </div>
                 <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
@@ -424,6 +822,7 @@ export default function Resume() {
             </div>
           </div>
         </section>
+      </div>
     </>
   );
 }

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://example.com"),
   icons: {
     icon: '/portfolio-website/mario-initial.svg',
-    shortcut: '/portfolio-website/favicon.ico',
+    shortcut: '/portfolio-website/mario-initial.svg',
   },
 };
 
