@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { cn } from "@/utils/cn";
@@ -38,7 +39,16 @@ export default function Header() {
           href="/" 
           className="flex items-center space-x-2 font-bold tracking-tight text-foreground"
         >
-          <span className="text-primary">Portfolio</span>
+          {mounted && (
+            <Image 
+              src={theme === "light" ? "/portfolio-website/images/logos/icon-light.svg" : "/portfolio-website/images/logos/icon-dark.svg"} 
+              alt="Mario Guerra Logo" 
+              width={32} 
+              height={32} 
+              className="h-8 w-auto" 
+              priority
+            />
+          )}
         </Link>
 
         {/* Desktop Navigation */}
