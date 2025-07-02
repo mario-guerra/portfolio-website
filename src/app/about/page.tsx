@@ -1,7 +1,7 @@
-// filepath: /Users/mariog/portfolio_website/portfolio-website/src/app/about/page.tsx
 import Image from "next/image";
 import Link from "next/link";
-import { FiArrowRight, FiFileText, FiLinkedin, FiGithub, FiTwitter } from "react-icons/fi";
+import { FiArrowRight, FiFileText, FiLinkedin, FiGithub, FiMail, FiYoutube } from "react-icons/fi";
+import { SiX } from "react-icons/si";
 import avatarImage from "../../../public/images/avatars/Mario_Guerra_avatar.png";
 
 export default function AboutPage() {
@@ -15,22 +15,21 @@ export default function AboutPage() {
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">About Me</h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  A passionate AI researcher specializing in natural language processing and large language models.
+                  Technical Product Manager specializing in AI-powered tools and API design for enhanced developer experiences.
                 </p>
               </div>
               <div className="max-w-[600px] space-y-4 text-foreground/90">
                 <p>
-                  Hello! I'm Mario Guerra, a full-stack developer based in San Francisco, CA. I have a passion for building
-                  digital experiences that are both functional and beautiful.
+                  Hello! I'm Mario Guerra, a Technical Product Manager with over 15 years of experience driving innovation in developer tools, APIs, AI-driven solutions, and scalable infrastructure.
                 </p>
                 <p>
-                  With a background in computer science and machine learning, I've been fortunate to work at the forefront of AI research, contributing to groundbreaking models that have transformed how humans interact with computers. My work spans from the early days of transformer architectures to today's cutting-edge multimodal systems.
+                  Currently at Microsoft, I lead the TypeSpec API Definition Language project, an open-source language that has been adopted by over 30% of Azure services to produce SDKs across multiple programming languages, cutting development and review time by 30%.
                 </p>
                 <p>
-                  When I'm not training neural networks or optimizing attention mechanisms, you'll find me writing about AI ethics, mentoring the next generation of researchers, or contemplating the future of human-AI collaboration.
+                  My passion lies in creating developer-centric products that enhance productivity and enable teams to ship high-quality APIs faster. I combine API design expertise with AI innovations to make software development more intuitive, efficient, and reliable.
                 </p>
               </div>
-              <div className="flex space-x-4">
+              <div className="flex flex-wrap gap-3">
                 <a
                   href="https://linkedin.com/in/mario-guerra"
                   target="_blank"
@@ -50,13 +49,29 @@ export default function AboutPage() {
                   <FiGithub className="h-5 w-5" />
                 </a>
                 <a
+                  href="https://youtube.com/@thisismarioguerra"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground hover:bg-muted"
+                  aria-label="YouTube"
+                >
+                  <FiYoutube className="h-5 w-5" />
+                </a>
+                <a
                   href="https://x.com/_marioguerra_"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground hover:bg-muted"
-                  aria-label="Twitter"
+                  aria-label="X (formerly Twitter)"
                 >
-                  <FiTwitter className="h-5 w-5" />
+                  <SiX className="h-4 w-4" />
+                </a>
+                <a
+                  href="/contact"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground hover:bg-muted"
+                  aria-label="Email"
+                >
+                  <FiMail className="h-5 w-5" />
                 </a>
               </div>
             </div>
@@ -83,15 +98,15 @@ export default function AboutPage() {
             <div className="text-center">
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Skills & Expertise</h2>
               <p className="mt-2 text-muted-foreground">
-                Here are some of the technologies and skills I've been working with
+                My core technical skills and areas of expertise
               </p>
             </div>
             
             <div className="space-y-8">
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold">Frontend Development</h3>
+                <h3 className="text-xl font-semibold">Technical Expertise</h3>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
-                  {["JavaScript", "TypeScript", "React", "Next.js", "Vue.js", "CSS/SCSS", "Tailwind CSS", "Redux"].map((skill) => (
+                  {["APIs", "TypeSpec", "OpenAPI", "LLMs", "RAG", "Distributed Systems", "Python", "C/C++", "Rust", "Azure", "Cloud Computing", "LLMOps", "Prompt Management", "Data Processing", "Qdrant", "Power BI", "DevOps", "CI/CD", "GitHub", "Security Standards"].map((skill) => (
                     <div key={skill} className="rounded-md bg-card p-3 text-center text-sm shadow-sm">
                       {skill}
                     </div>
@@ -100,42 +115,9 @@ export default function AboutPage() {
               </div>
               
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold">Backend Development</h3>
+                <h3 className="text-xl font-semibold">Product & Leadership</h3>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
-                  {["Node.js", "Express", "MongoDB", "PostgreSQL", "GraphQL", "REST APIs", "Firebase", "AWS"].map((skill) => (
-                    <div key={skill} className="rounded-md bg-card p-3 text-center text-sm shadow-sm">
-                      {skill}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold">Machine Learning & AI</h3>
-                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
-                  {["PyTorch", "TensorFlow", "JAX", "Transformers", "Neural Networks", "NLP", "Computer Vision", "Reinforcement Learning"].map((skill) => (
-                    <div key={skill} className="rounded-md bg-card p-3 text-center text-sm shadow-sm">
-                      {skill}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold">Programming & Tools</h3>
-                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
-                  {["Python", "C++", "Julia", "CUDA", "Kubernetes", "Docker", "Ray", "Distributed Computing"].map((skill) => (
-                    <div key={skill} className="rounded-md bg-card p-3 text-center text-sm shadow-sm">
-                      {skill}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold">Research & Collaboration</h3>
-                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
-                  {["Technical Writing", "Academic Publication", "Model Evaluation", "Responsible AI", "Ethics", "Research Design", "Git", "CI/CD"].map((skill) => (
+                  {["Developer Tools", "API-First Strategy", "Cross-Functional Leadership", "Product Strategy", "Roadmapping", "Data-Driven Decisions", "Developer Advocacy", "Community Engagement", "User Research", "Requirements Gathering", "Stakeholder Alignment", "KPI Definition"].map((skill) => (
                     <div key={skill} className="rounded-md bg-card p-3 text-center text-sm shadow-sm">
                       {skill}
                     </div>
@@ -154,7 +136,7 @@ export default function AboutPage() {
             <div className="text-center">
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Experience</h2>
               <p className="mt-2 text-muted-foreground">
-                My professional journey so far
+                My professional journey
               </p>
             </div>
             
@@ -163,14 +145,14 @@ export default function AboutPage() {
                 <div className="absolute -left-[7px] top-[5px] h-3.5 w-3.5 rounded-full border-2 border-primary bg-background"></div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Senior AI Researcher</h3>
-                    <span className="text-sm text-muted-foreground">2022 - Present</span>
+                    <h3 className="text-lg font-semibold">Senior Product Manager - TypeSpec API Definition Language</h3>
+                    <span className="text-sm text-muted-foreground">2021 - Present</span>
                   </div>
-                  <p className="text-base font-medium">DeepMind AI Labs</p>
+                  <p className="text-base font-medium">Microsoft</p>
                   <p className="text-sm text-muted-foreground">
-                    Leading research on multimodal large language models and developing
-                    novel attention mechanisms. Published papers at top AI conferences and
-                    mentored junior researchers on transformer architecture improvements.
+                    Leading product vision and strategy for TypeSpec, an open-source API definition language transforming API development.
+                    Guiding Azure service teams as a member of the Azure API Stewardship Board, driving best practices for API development.
+                    Defining KPIs to measure product success and iterating based on real-world usage.
                   </p>
                 </div>
               </div>
@@ -179,30 +161,14 @@ export default function AboutPage() {
                 <div className="absolute -left-[7px] top-[5px] h-3.5 w-3.5 rounded-full border-2 border-primary bg-background"></div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">AI Research Engineer</h3>
-                    <span className="text-sm text-muted-foreground">2020 - 2022</span>
+                    <h3 className="text-lg font-semibold">Principal Software Engineer / Manager</h3>
+                    <span className="text-sm text-muted-foreground">2008 - 2021</span>
                   </div>
-                  <p className="text-base font-medium">OpenAI</p>
+                  <p className="text-base font-medium">Qualcomm</p>
                   <p className="text-sm text-muted-foreground">
-                    Contributed to GPT-3 development with focus on optimization techniques
-                    and training infrastructure. Implemented improvements to reduce inference
-                    latency and developed fine-tuning systems for improved response quality.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="relative border-l border-border pl-6">
-                <div className="absolute -left-[7px] top-[5px] h-3.5 w-3.5 rounded-full border-2 border-primary bg-background"></div>
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">NLP Researcher</h3>
-                    <span className="text-sm text-muted-foreground">2017 - 2020</span>
-                  </div>
-                  <p className="text-base font-medium">Google Brain</p>
-                  <p className="text-sm text-muted-foreground">
-                    Member of the original BERT team, contributing to transformer architecture
-                    design and pre-training methodology. Developed techniques for knowledge
-                    extraction and published highly-cited research on attention mechanisms.
+                    Led the development of tools and platforms for Qualcomm's Hexagon DSP, the core of Snapdragon modem and Neural Processing Unit technology.
+                    Served as de-facto product manager for Hexagon tools used by first-party software development teams.
+                    Improved on-time delivery by 35% through the implementation of data-driven development processes.
                   </p>
                 </div>
               </div>
@@ -211,14 +177,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Education Section */}
+      {/* Key Projects Section */}
       <section className="bg-muted/40 py-16 md:py-24">
         <div className="container px-4 md:px-6">
           <div className="mx-auto max-w-3xl space-y-8">
             <div className="text-center">
-              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Education</h2>
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Key Projects</h2>
               <p className="mt-2 text-muted-foreground">
-                My academic background
+                Highlights from my portfolio
               </p>
             </div>
             
@@ -227,14 +193,11 @@ export default function AboutPage() {
                 <div className="absolute -left-[7px] top-[5px] h-3.5 w-3.5 rounded-full border-2 border-primary bg-background"></div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Ph.D. in Machine Learning</h3>
-                    <span className="text-sm text-muted-foreground">2014 - 2017</span>
+                    <h3 className="text-lg font-semibold">TypeSpec 1.0 Launch</h3>
+                    <span className="text-sm text-muted-foreground">Microsoft</span>
                   </div>
-                  <p className="text-base font-medium">Stanford University</p>
                   <p className="text-sm text-muted-foreground">
-                    Dissertation on attention mechanisms for neural network architectures under the
-                    guidance of Dr. Andrew Ng. Research focused on efficient training of neural networks
-                    for natural language understanding.
+                    Led the zero-to-one launch of TypeSpec, delivering an API definition language that achieved 8-10x code reduction and 30% faster review times, delivering measurable developer productivity.
                   </p>
                 </div>
               </div>
@@ -243,14 +206,11 @@ export default function AboutPage() {
                 <div className="absolute -left-[7px] top-[5px] h-3.5 w-3.5 rounded-full border-2 border-primary bg-background"></div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">M.S. in Computer Science</h3>
-                    <span className="text-sm text-muted-foreground">2012 - 2014</span>
+                    <h3 className="text-lg font-semibold">RAG-Enhanced Chatbots with Microsoft Teams Data</h3>
+                    <span className="text-sm text-muted-foreground">Personal Project</span>
                   </div>
-                  <p className="text-base font-medium">Massachusetts Institute of Technology</p>
                   <p className="text-sm text-muted-foreground">
-                    Specialized in artificial intelligence and natural language processing.
-                    Research focused on neural network architectures for language understanding,
-                    with an emphasis on recurrent neural networks for sequence modeling.
+                    Built RAG-enhanced chatbots using Graph API and Azure Foundry, leveraging LLMs to optimize workflows and demonstrate API-driven user support with secure data exchange.
                   </p>
                 </div>
               </div>
@@ -259,14 +219,24 @@ export default function AboutPage() {
                 <div className="absolute -left-[7px] top-[5px] h-3.5 w-3.5 rounded-full border-2 border-primary bg-background"></div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">B.S. in Computer Science</h3>
-                    <span className="text-sm text-muted-foreground">2008 - 2012</span>
+                    <h3 className="text-lg font-semibold">@azure Functionality in GitHub Copilot</h3>
+                    <span className="text-sm text-muted-foreground">Microsoft</span>
                   </div>
-                  <p className="text-base font-medium">University of California, Berkeley</p>
                   <p className="text-sm text-muted-foreground">
-                    Graduated summa cum laude with honors thesis on statistical methods for machine
-                    translation. Participated in early research on neural approaches to NLP and
-                    completed a minor in Mathematics.
+                    Contributed to LLM-driven API integrations, enhancing developer productivity through context-aware code suggestions with secure data handling.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="relative border-l border-border pl-6">
+                <div className="absolute -left-[7px] top-[5px] h-3.5 w-3.5 rounded-full border-2 border-primary bg-background"></div>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-semibold">AI Document Summarization</h3>
+                    <span className="text-sm text-muted-foreground">Personal Project</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Developed an LLM-based solution to summarize large documents, optimizing data pipelines for efficient, secure processing with a sliding window approach.
                   </p>
                 </div>
               </div>
@@ -280,9 +250,9 @@ export default function AboutPage() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Want to know more?</h2>
+              <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Let's Connect</h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground">
-                Check out my resume for a more detailed overview of my experience and skills.
+                Interested in collaborating on API design, developer tools, or AI-powered solutions? Check out my full resume or get in touch.
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">

@@ -206,41 +206,6 @@ export default function Blog() {
             </div>
           </div>
         </section>
-        
-        {/* Newsletter */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  Subscribe to the Newsletter
-                </h2>
-                <p className="mx-auto max-w-[700px] text-primary-foreground/90 md:text-xl">
-                  Get the latest articles and resources directly to your inbox.
-                </p>
-              </div>
-              <div className="mx-auto w-full max-w-md space-y-2">
-                <form className="flex space-x-2">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="flex-1 rounded-md border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-2 text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary-foreground/50"
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="inline-flex h-10 items-center justify-center rounded-md bg-white px-4 text-sm font-medium text-primary shadow transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                  >
-                    Subscribe
-                  </button>
-                </form>
-                <p className="text-xs text-primary-foreground/80">
-                  No spam, ever. I'll never share your email with anyone else.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
     </>
   );
 }
