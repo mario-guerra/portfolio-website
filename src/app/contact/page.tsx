@@ -251,7 +251,7 @@ export default function Contact() {
               </div>
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/mario-guerra"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-12 items-center justify-center rounded-md border border-input bg-background px-6 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
@@ -259,7 +259,7 @@ export default function Contact() {
                   GitHub
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://linkedin.com/in/mario-guerra"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-12 items-center justify-center rounded-md border border-input bg-background px-6 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
@@ -267,7 +267,7 @@ export default function Contact() {
                   LinkedIn
                 </a>
                 <a
-                  href="https://twitter.com/yourusername"
+                  href="https://x.com/_marioguerra_"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-12 items-center justify-center rounded-md border border-input bg-background px-6 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"

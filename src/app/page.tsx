@@ -131,7 +131,7 @@ export default function Home() {
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Featured Projects</h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                Check out some of my recent work and personal projects.
+                A few of my recent AI-enabled projects.
               </p>
             </div>
           </div>
