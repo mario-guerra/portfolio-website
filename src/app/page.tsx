@@ -66,7 +66,7 @@ const featuredProjects = [
 	},
 	{
 		id: 3,
-		title: "AI-Powered Audio Translation Service",
+		title: " Audio Translation Service",
 		description: "A translation service that converts audio recordings between languages using Azure AI services, designed with TypeSpec as the blueprint and AI-assisted development.",
 		tags: ["TypeSpec", "Azure Cognitive Services", "API Design", "AI-Assisted Development", "C#"],
 		imageUrl: "/portfolio-website/images/blog/building-a-translation-service-with-typespec-and-ai-a-blueprint-approach/TypeSpec-AI-Translation-Service.jpeg",
@@ -81,15 +81,15 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center overflow-hidden py-20 md:py-32">
         <div className="absolute inset-0 -z-10 animated-gradient bg-gradient-to-r from-primary/20 via-background to-secondary/20"></div>
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] mx-auto max-w-6xl">
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter text-foreground sm:text-5xl xl:text-6xl/none">
-                  AI-Powered Tools & API Design for Enhanced Developer Experience
+                  Developer Experience Elevated Through AI & Human-Centered Design
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  Hi, I'm Mario Guerra. I specialize in creating AI-powered tools and processes that enhance developer experiences, helping teams ship high-quality APIs faster. By combining API design expertise with AI innovations, I make software development more intuitive, efficient, and reliable for teams of all sizes.
+                  Hi, I'm Mario Guerra. I create intelligent tools that transform how developers build software, delivering measurable productivity gains and higher quality code. By merging human-centered design principles with strategic AI capabilities, I turn complex workflows into intuitive, efficient experiences for teams of all sizes.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -126,7 +126,7 @@ export default function Home() {
       
       {/* Featured Projects Section */}
       <section className="bg-muted/40 py-16 md:py-24">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 mx-auto">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Featured Projects</h2>
@@ -135,7 +135,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 mx-auto max-w-6xl">
             {featuredProjects.map((project) => (
               <div key={project.id} className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card text-card-foreground shadow-sm transition-all hover:shadow-md">
                 <div className="aspect-video overflow-hidden">
@@ -193,7 +193,7 @@ export default function Home() {
       
       {/* Skills Section */}
       <section className="py-16 md:py-24">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 mx-auto">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">My Skills</h2>
@@ -202,7 +202,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mt-12">
+          <div className="mt-12 mx-auto max-w-6xl">
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
               {(
                 [
@@ -242,8 +242,8 @@ export default function Home() {
       
       {/* CTA Section */}
       <section className="border-t border-border bg-muted/40 py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center max-w-6xl mx-auto">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Let's Work Together</h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">

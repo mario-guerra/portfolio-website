@@ -9,13 +9,13 @@ export default function AboutPage() {
     <>
       {/* Hero Section */}
       <section className="relative py-16 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-8 lg:grid-cols-[1fr_400px] lg:gap-12">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="grid gap-8 lg:grid-cols-[1fr_400px] lg:gap-12 max-w-6xl mx-auto">
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">About Me</h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  Technical Product Manager specializing in AI-powered tools and API design for enhanced developer experiences.
+                  Product leader translating technical complexity into seamless developer experiences. Proven record of driving 30%+ productivity gains by combining developer-first principles with strategic AI innovation.
                 </p>
               </div>
               <div className="max-w-[600px] space-y-4 text-foreground/90">
@@ -26,7 +26,7 @@ export default function AboutPage() {
                   Currently at Microsoft, I lead the TypeSpec API Definition Language project, an open-source language that has been adopted by over 30% of Azure services to produce SDKs across multiple programming languages, cutting development and review time by 30%.
                 </p>
                 <p>
-                  My passion lies in creating developer-centric products that enhance productivity and enable teams to ship high-quality APIs faster. I combine API design expertise with AI innovations to make software development more intuitive, efficient, and reliable.
+                  I specialize in creating developer-first products that measurably boost productivity and accelerate software delivery. By integrating human-centered design with cutting-edge AI capabilities, I transform complex development workflows into intuitive, efficient, and reliable experiences.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
@@ -93,8 +93,8 @@ export default function AboutPage() {
 
       {/* Skills Section */}
       <section className="bg-muted/40 py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-3xl space-y-8">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="mx-auto max-w-4xl space-y-8">
             <div className="text-center">
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Skills & Expertise</h2>
               <p className="mt-2 text-muted-foreground">
@@ -131,8 +131,8 @@ export default function AboutPage() {
 
       {/* Experience Section */}
       <section className="py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-3xl space-y-8">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="mx-auto max-w-4xl space-y-8">
             <div className="text-center">
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Experience</h2>
               <p className="mt-2 text-muted-foreground">
@@ -179,8 +179,8 @@ export default function AboutPage() {
 
       {/* Key Projects Section */}
       <section className="bg-muted/40 py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-3xl space-y-8">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="mx-auto max-w-4xl space-y-8">
             <div className="text-center">
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Key Projects</h2>
               <p className="mt-2 text-muted-foreground">
@@ -247,8 +247,8 @@ export default function AboutPage() {
 
       {/* CTA Section */}
       <section className="border-t border-border py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center max-w-4xl mx-auto">
             <div className="space-y-2">
               <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Let's Connect</h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground">

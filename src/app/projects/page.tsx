@@ -89,7 +89,7 @@ export default function ProjectsPage() {
     <>
       {/* Hero Section */}
       <section className="relative py-16 md:py-24">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 mx-auto">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">My Projects</h1>
             <p className="mt-4 text-muted-foreground md:text-lg">
@@ -101,8 +101,8 @@ export default function ProjectsPage() {
 
       {/* Filters Section */}
       <section className="py-8">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between max-w-6xl mx-auto">
             <div className="flex items-center gap-2">
               <FiFilter className="h-4 w-4 text-muted-foreground" />
               <span className="text-sm font-medium">Filter by:</span>
@@ -135,8 +135,8 @@ export default function ProjectsPage() {
 
       {/* Projects Grid */}
       <section className="py-8 md:py-16">
-        <div className="container px-4 md:px-6">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="container px-4 md:px-6 mx-auto">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
             {filteredProjects.length > 0 ? (
               filteredProjects.map((project) => (
                 <div

@@ -530,7 +530,7 @@ export default function Resume() {
     <>
       <div ref={resumeRef}>
         <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="mx-auto max-w-3xl space-y-8">
               {/* Header */}
               <div className="space-y-4">
